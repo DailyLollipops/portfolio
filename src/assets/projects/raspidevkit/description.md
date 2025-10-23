@@ -5,9 +5,9 @@ It provides an easy-to-use programming interface, making hardware projects more 
 
 RaspiDevKit supports a wide variety of sensors and devices, allowing users to interact with hardware using simple Python commands.
 
-**PyPi**: [click here](https://pypi.org/project/raspidevkit/)
-
 ### 🔗 Links
+
+**PyPi**: [click here](https://pypi.org/project/raspidevkit/)
 
 **Documentation:** [click here](https://raspidevkit.readthedocs.io/en/latest/)
 

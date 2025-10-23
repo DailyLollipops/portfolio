@@ -172,7 +172,7 @@ export const ProjectDetailsDialog = ({ open, onClose, project }: ProjectDetailsD
                   size="small"
                   variant="outlined"
                   startIcon={isGitHub ? <FaGithub /> : <FaExternalLinkAlt />}
-                  title={displayName}
+                  title={isGitHub ? "View on GitHub" : "View App"}
                   sx={{
                     textTransform: "none",
                     borderRadius: 2,
@@ -180,7 +180,7 @@ export const ProjectDetailsDialog = ({ open, onClose, project }: ProjectDetailsD
                     py: 0.5,
                   }}
                 >
-                  {isGitHub ? "View on GitHub" : "View App"}
+                  {displayName}
                 </Button>
               ) : (
                 <IconButton
@@ -220,18 +220,20 @@ export const ProjectDetailsDialog = ({ open, onClose, project }: ProjectDetailsD
                   horizontal: "right",
                 }}
                 disableRestoreFocus
-                PaperProps={{
-                  onMouseEnter: () => setIsHoveringPopover(true),
-                  onMouseLeave: () => {
-                    setIsHoveringPopover(false);
-                    handlePopoverClose();
-                  },
-                  sx: {
-                    borderRadius: 2,
-                    boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-                    backgroundColor: "rgba(255,255,255,0.95)",
-                    backdropFilter: "blur(6px)",
-                  },
+                slotProps={{
+                  paper: {
+                    onMouseEnter: () => setIsHoveringPopover(true),
+                    onMouseLeave: () => {
+                      setIsHoveringPopover(false);
+                      handlePopoverClose();
+                    },
+                    sx: {
+                      borderRadius: 2,
+                      boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+                      backgroundColor: "rgba(255,255,255,0.95)",
+                      backdropFilter: "blur(6px)",
+                    },
+                  }
                 }}
               >
                 <Box sx={{ p: 2, maxWidth: 260 }}>

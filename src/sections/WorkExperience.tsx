@@ -1,34 +1,40 @@
-import { Box, Typography, Container, Stack } from "@mui/material";
+import { Box, Typography, Container, Stack, Chip } from "@mui/material";
 import { motion } from "framer-motion";
+import { tags } from "../types/Project";
+import type { Tag } from "../types/Project";
 
 interface Experience {
   role: string;
   company: string;
   period: string;
   description: string;
+  tags: Tag[];
 }
 
 const experiences: Experience[] = [
   {
-    role: "Frontend Engineer",
-    company: "Tech Solutions Inc.",
-    period: "2021 – Present",
+    role: "Junior Python Developer",
+    company: "Elgada BPO Solutions Inc.",
+    period: "Sep 2023 - Present",
     description:
-      "Building high-performance admin panels and dashboards using React and TypeScript. Collaborated with backend teams to optimize API integrations and improve UX consistency across applications.",
+      "Building and maintaining internal tools for scraping automation and data processing using Python. Collaborating with cross-functional teams to deliver efficient software solutions that enhance business operations.",
+    tags: ["Python", "Flask", "FastAPI", "Redis", "MySQL", "Docker", "Selenium", "Playwright", "AWS", "Jenkins"],
   },
   {
-    role: "Full-Stack Developer",
-    company: "Startup Labs",
-    period: "2019 – 2021",
+    role: "Programmer",
+    company: "Boac Marinduque Local Government Unit",
+    period: "Jul 2023 - Aug 2023",
     description:
-      "Developed APIs with FastAPI and integrated Flutter mobile apps with scalable cloud backends. Led deployment pipelines using Docker and CI/CD practices.",
+      "Developed and maintained various local government software solutions, including the Municlock DTR Management System. Focused on enhancing system reliability and user experience through efficient coding practices and regular updates.",
+    tags: ["Python", "Tkinter", "MySQL"],
   },
   {
     role: "Intern Developer",
-    company: "InnovateX",
-    period: "2018 – 2019",
+    company: "DILG Marinduque Provincial Office",
+    period: "Apr 2023 - Jun 2023",
     description:
-      "Worked on IoT-based prototypes with Arduino and Raspberry Pi, automating small-scale hardware solutions and dashboards for analytics.",
+      "Worked on Barangay Legislative Tracking System (BLTS) to digitize document tracking for barangay secretaries. Utilized Laravel and Tailwind CSS to create user-friendly interfaces and efficient backend systems.",
+    tags: ["Laravel", "Tailwind", "MySQL"],
   },
 ];
 
@@ -182,7 +188,34 @@ export const WorkExperienceSection = () => {
                   <Typography color="text.secondary" mb={1}>
                     {exp.company} • {exp.period}
                   </Typography>
-                  <Typography color="text.primary">{exp.description}</Typography>
+                  <Typography color="text.primary" mb={2}>
+                    {exp.description}
+                  </Typography>
+
+                  {/* 🧠 Tech Stack Icons */}
+                  <Stack direction="row" flexWrap="wrap" gap={1.5}>
+                    {exp.tags.map((tag) => {
+                      const iconData = tags[tag];
+                      return (
+                        <Chip
+                          key={tag}
+                          label={tag}
+                          size="small"
+                          icon={iconData.icon}
+                          sx={{
+                            padding: 1,
+                            color: iconData.color,
+                            borderColor: iconData.color,
+                            bgcolor: "rgba(255, 255, 255, 0.6)",
+                            backdropFilter: "blur(4px)",
+                            "& .MuiChip-icon": { color: iconData.color },
+                          }}
+                          variant="outlined"
+                          onClick={(e) => e.stopPropagation()}
+                        />
+                      );
+                    })}
+                  </Stack>
                 </Box>
               </motion.div>
             ))}

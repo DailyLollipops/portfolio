@@ -197,7 +197,7 @@ export const ProjectDetailsDialog = ({ open, onClose, project }: ProjectDetailsD
             })
           ) : (
             <Box display="flex" alignItems="center" gap={0.5}>
-              <Typography variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
+              <Typography display={{ xs: "none", sm: "block" }} variant="body2" color="text.secondary" sx={{ fontStyle: "italic" }}>
                 Repository Private
               </Typography>
               <IconButton

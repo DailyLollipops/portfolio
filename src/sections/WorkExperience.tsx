@@ -49,7 +49,6 @@ export const WorkExperienceSection = () => {
         background: "linear-gradient(135deg, #f9fafb 0%, #e3f2fd 100%)",
       }}
     >
-      {/* 🔵 Floating Blobs (background) */}
       <Box sx={{ display: { xs: "none", sm: "block" } }}>
         <motion.div
           style={{
@@ -95,7 +94,6 @@ export const WorkExperienceSection = () => {
         />
       </Box>
 
-      {/* 💼 Content */}
       <Container maxWidth="md" sx={{ position: "relative", zIndex: 2 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -123,9 +121,7 @@ export const WorkExperienceSection = () => {
           </Typography>
         </motion.div>
 
-        {/* 🧭 Timeline */}
         <Box sx={{ position: "relative", ml: { xs: 3, md: 6 }, pl: 2 }}>
-          {/* Timeline line */}
           <Box
             sx={{
               position: "absolute",
@@ -147,7 +143,6 @@ export const WorkExperienceSection = () => {
                 viewport={{ once: true }}
                 style={{ position: "relative" }}
               >
-                {/* Timeline dot */}
                 <Box
                   sx={{
                     position: "absolute",
@@ -162,7 +157,6 @@ export const WorkExperienceSection = () => {
                   }}
                 />
 
-                {/* Experience content */}
                 <Box
                   sx={{
                     pl: 5,
@@ -192,7 +186,6 @@ export const WorkExperienceSection = () => {
                     {exp.description}
                   </Typography>
 
-                  {/* 🧠 Tech Stack Icons */}
                   <Stack direction="row" flexWrap="wrap" gap={1.5}>
                     {exp.tags.map((tag) => {
                       const iconData = tags[tag];

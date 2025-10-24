@@ -21,8 +21,8 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
-import type { Project } from "../types/Project";
-import { tags } from "../types/Project";
+import { tags } from "@/components/Tags";
+import type { Project } from "@/types/custom";
 
 const ArrowButton = ({
   onClick,

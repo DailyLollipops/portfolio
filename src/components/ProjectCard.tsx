@@ -7,8 +7,8 @@ import {
   useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import type { Project } from "../types/Project";
-import { tags } from "../types/Project";
+import { tags } from "@/components/Tags"
+import type { Project } from "@/types/custom";
 
 interface ProjectCardProps {
   project: Project;

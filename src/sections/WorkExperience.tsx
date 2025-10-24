@@ -1,42 +1,8 @@
 import { Box, Typography, Container, Stack, Chip } from "@mui/material";
 import { motion } from "framer-motion";
-import { tags } from "../types/Project";
-import type { Tag } from "../types/Project";
+import { tags } from "../components/Tags";
+import { portfolio } from "../assets/data";
 
-interface Experience {
-  role: string;
-  company: string;
-  period: string;
-  description: string;
-  tags: Tag[];
-}
-
-const experiences: Experience[] = [
-  {
-    role: "Junior Python Developer",
-    company: "Elgada BPO Solutions Inc.",
-    period: "Sep 2023 - Present",
-    description:
-      "Building and maintaining internal tools for scraping automation and data processing using Python. Collaborating with cross-functional teams to deliver efficient software solutions that enhance business operations.",
-    tags: ["Python", "Flask", "FastAPI", "Redis", "MySQL", "Docker", "Selenium", "Playwright", "AWS", "Jenkins"],
-  },
-  {
-    role: "Programmer",
-    company: "Boac Marinduque Local Government Unit",
-    period: "Jul 2023 - Aug 2023",
-    description:
-      "Developed and maintained various local government software solutions, including the Municlock DTR Management System. Focused on enhancing system reliability and user experience through efficient coding practices and regular updates.",
-    tags: ["Python", "Tkinter", "MySQL"],
-  },
-  {
-    role: "Intern Developer",
-    company: "DILG Marinduque Provincial Office",
-    period: "Apr 2023 - Jun 2023",
-    description:
-      "Worked on Barangay Legislative Tracking System (BLTS) to digitize document tracking for barangay secretaries. Utilized Laravel and Tailwind CSS to create user-friendly interfaces and efficient backend systems.",
-    tags: ["Laravel", "Tailwind", "MySQL"],
-  },
-];
 
 export const WorkExperienceSection = () => {
   return (
@@ -134,7 +100,7 @@ export const WorkExperienceSection = () => {
           />
 
           <Stack spacing={6}>
-            {experiences.map((exp, i) => (
+            {portfolio.experiences.map((exp, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 40 }}

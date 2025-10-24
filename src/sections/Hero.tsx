@@ -2,29 +2,16 @@ import { Box, Typography, Button, Stack, Chip, Avatar } from "@mui/material";
 import { motion } from "framer-motion";
 import { FaReact, FaDocker, FaLaravel } from "react-icons/fa";
 import {
-  SiTypescript,
-  SiPython,
-  SiFastapi,
-  SiFlutter,
-  SiArduino,
   SiMysql,
   SiRedis,
   SiFirebase,
   SiDjango,
   SiRaspberrypi,
 } from "react-icons/si";
-import profilePic from "../assets/profile.jpg";
+import { tags } from "@/components/Tags";
+import { portfolio } from "@/assets/data";
 
-export const HeroSection: React.FC = () => {
-  const techStack = [
-    { name: "React", icon: <FaReact color="#61DAFB" /> },
-    { name: "TypeScript", icon: <SiTypescript color="#3178C6" /> },
-    { name: "Python", icon: <SiPython color="#3776AB" /> },
-    { name: "FastAPI", icon: <SiFastapi color="#05998B" /> },
-    { name: "Flutter", icon: <SiFlutter color="#02569B" /> },
-    { name: "Arduino", icon: <SiArduino color="#3186A0" /> },
-  ];
-
+export const HeroSection = () => {
   const floatingIcons = [
     { icon: <SiMysql color="#00618A" size={32} />, top: "15%", left: "20%" },
     { icon: <FaDocker color="#0db7ed" size={36} />, top: "65%", right: "15%" },
@@ -140,8 +127,8 @@ export const HeroSection: React.FC = () => {
       {/* Content */}
       <Box position="relative" zIndex={2} px={2}>
         <Avatar
-          alt="Clarence Madrigal"
-          src={profilePic}
+          alt={portfolio.name}
+          src={portfolio.profilePic}
           sx={{
             width: 120,
             height: 120,
@@ -162,7 +149,7 @@ export const HeroSection: React.FC = () => {
             gutterBottom
             sx={{ fontSize: { xs: "2rem", md: "3rem" }, color: "#0d47a1" }}
           >
-            Clarence Madrigal
+            {portfolio.name}
           </Typography>
         </motion.div>
 
@@ -177,8 +164,7 @@ export const HeroSection: React.FC = () => {
             maxWidth="600px"
             sx={{ mb: 3, mx: "auto" }}
           >
-            I create scalable and maintainable digital solutions across web, mobile,
-            and embedded platforms — built with performance and user experience in mind.
+            {portfolio.heroTagline}
           </Typography>
         </motion.div>
 
@@ -190,22 +176,25 @@ export const HeroSection: React.FC = () => {
           mb={4}
           sx={{ mt: 2 }}
         >
-          {techStack.map((tech) => (
-            <Chip
-              key={tech.name}
-              icon={tech.icon}
-              label={tech.name}
-              variant="outlined"
-              color="primary"
-              sx={{
-                padding: 1,
-                fontWeight: 500,
-                bgcolor: "rgba(255,255,255,0.7)",
-                backdropFilter: "blur(8px)",
-                boxShadow: 1,
-              }}
-            />
-          ))}
+          {portfolio.tags.map((tag) => {
+            const iconData = tags[tag];
+            return (
+              <Chip
+                key={tag}
+                label={tag}
+                icon={iconData.icon}
+                variant="outlined"
+                size="small"
+                sx={{
+                  padding: 1,
+                  color: iconData.color,
+                  borderColor: iconData.color,
+                  bgcolor: "rgba(255,255,255,0.6)",
+                  "& .MuiChip-icon": { color: iconData.color },
+                }}
+              />
+            );
+          })}
         </Stack>
 
         <Stack

@@ -1,4 +1,6 @@
 import { Box, Typography, Link, useTheme } from "@mui/material";
+import { portfolio } from "@/assets/data";
+
 
 export const Footer = () => {
   const theme = useTheme();
@@ -20,12 +22,12 @@ export const Footer = () => {
           opacity: 0.9,
         }}
       >
-        © {new Date().getFullYear()} Clarence Madrigal — Built with React & MUI
+        © {new Date().getFullYear()} {portfolio.name} — Built with React & MUI
       </Typography>
 
       <Box mt={1}>
         <Link
-          href="https://github.com/DailyLollipops"
+          href={portfolio.githubLink}
           target="_blank"
           underline="none"
           sx={{
@@ -39,7 +41,7 @@ export const Footer = () => {
           GitHub
         </Link>
         <Link
-          href="https://linkedin.com/"
+          href={portfolio.linkedInLink}
           target="_blank"
           underline="none"
           sx={{

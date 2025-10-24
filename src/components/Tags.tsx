@@ -50,15 +50,3 @@ export const tags = {
   Tkinter: { icon: <FaWindowMaximize color="#3776AB" />, color: "#3776AB" },
   TypeScript: { icon: <SiTypescript color="#3178C6" />, color: "#3178C6" },
 } as const;
-
-export type Tag = keyof typeof tags;
-
-export interface Project {
-  title: string;
-  shortDesription?: string;
-  description?: string;
-  descriptionMd?: string;
-  images: string[];
-  tags: Tag[];
-  links?: string[];
-}

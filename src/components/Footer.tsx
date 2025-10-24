@@ -11,7 +11,6 @@ export const Footer = () => {
       sx={{
         py: 4,
         textAlign: "center",
-        mt: 6,
         background: theme.palette.primary.dark,
         color: "white",
       }}

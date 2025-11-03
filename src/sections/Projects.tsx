@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { ProjectCard } from "../components/ProjectCard";
 import { ProjectDetailsDialog } from "../components/ProjectDetailsDialog";
 import type { Project } from "../types/custom";
-import { portfolio } from "../assets/data"
-
+import { portfolio } from "../assets/data";
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -88,6 +87,27 @@ export const ProjectsSection = () => {
           </Grid>
         ))}
       </Grid>
+
+      {/* Disclaimer */}
+      <Box
+        textAlign="center"
+        mt={8}
+        position="relative"
+        zIndex={2}
+        sx={{
+          maxWidth: 700,
+          mx: "auto",
+          px: 2,
+          color: "text.secondary",
+          fontSize: "0.9rem",
+          fontStyle: "italic",
+        }}
+      >
+        <Typography variant="body2">
+          <strong>Note:</strong> Some projects are not displayed here due to
+          non-disclosure agreements and client confidentiality.
+        </Typography>
+      </Box>
 
       {/* Dialog */}
       <ProjectDetailsDialog

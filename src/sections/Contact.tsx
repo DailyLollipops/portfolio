@@ -13,6 +13,13 @@ import {
 import { FaRegPaperPlane } from "react-icons/fa";
 import emailjs from "emailjs-com";
 
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const isEmailJsConfigured = Boolean(
+  EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY
+);
+
 const Field = ({
   label,
   htmlFor,
@@ -54,16 +61,22 @@ export const ContactSection = () => {
     e.preventDefault();
     setLoading(true);
 
+    if (!isEmailJsConfigured) {
+      setLoading(false);
+      setFeedback({ open: true, success: false });
+      return;
+    }
+
     try {
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID!,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID!,
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
           from_email: form.email,
           message: form.message,
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY!
+        EMAILJS_PUBLIC_KEY
       );
 
       setFeedback({ open: true, success: true });
@@ -197,7 +210,9 @@ export const ContactSection = () => {
         >
           {feedback.success
             ? "Message sent successfully!"
-            : "Failed to send message. Please try again."}
+            : isEmailJsConfigured
+              ? "Failed to send message. Please try again."
+              : "Contact form is not configured. Check the .env file."}
         </Alert>
       </Snackbar>
     </Box>

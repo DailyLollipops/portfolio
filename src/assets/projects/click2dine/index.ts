@@ -5,25 +5,7 @@ import screenshot2 from "./2.png";
 import screenshot3 from "./3.png";
 import screenshot4 from "./4.png";
 import screenshot5 from "./5.png";
-
-const descriptionMd = `## Click2Dine
-
-A Flutter-based **food delivery app** connecting customers with local restaurants, backed by Firebase.
-
-### 🚀 Highlights
-
-- Firebase Auth user authentication
-- Restaurant & product data in Cloud Firestore
-- Restaurant browsing, search, cart, and order tracking
-- Push notifications via Firebase Cloud Messaging
-- Owner and customer navigation flows
-- Python seed scripts for restaurant/menu setup
-
-### 🏗️ Tech Stack
-
-- **App:** Flutter, Dart
-- **Backend:** Firebase Auth, Firestore, Cloud Messaging, Functions
-- **Tooling:** Python seed scripts`;
+import descriptionMd from "./description.md?raw";
 
 export const project: Project = {
   title: "Click2Dine",

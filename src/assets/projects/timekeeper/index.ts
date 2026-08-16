@@ -4,24 +4,7 @@ import screenshot1 from "./1.png";
 import screenshot2 from "./2.png";
 import screenshot3 from "./3.png";
 import screenshot4 from "./4.png";
-
-const descriptionMd = `## Timekeeper
-
-An **attendance-taking app** with QR-code registration and login, SMS notifications, and report generation.
-
-### 🚀 Highlights
-
-- Login via QR code (emailed on registration)
-- SMS notification to guardians on login
-- Automated QR-code generation
-- Admin dashboard for users, attendance, and settings
-- Report generation delivered via email
-
-### 🏗️ Tech Stack
-
-- **App:** Flutter
-- **Storage:** SQLite
-- **Notifications:** SMS (Telephony)`;
+import descriptionMd from "./description.md?raw";
 
 export const project: Project = {
   title: "Timekeeper",

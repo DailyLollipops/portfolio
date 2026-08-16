@@ -11,7 +11,7 @@ export const WorkExperienceSection = () => {
         Work Experience
       </Typography>
       <Typography variant="body2" color="text.secondary" mb={4}>
-        My journey of creating software — from hands-on engineering to
+        My journey of creating software - from hands-on engineering to
         full-stack architecture.
       </Typography>
 

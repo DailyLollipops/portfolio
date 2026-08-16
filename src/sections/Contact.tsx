@@ -82,7 +82,7 @@ export const ContactSection = () => {
         Contact
       </Typography>
       <Typography variant="body2" color="text.secondary" mb={4}>
-        Have a question or want to collaborate? Open a new “issue” below — send
+        Have a question or want to collaborate? Open a new issue below - send
         me a message.
       </Typography>
 

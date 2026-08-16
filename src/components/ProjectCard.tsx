@@ -3,10 +3,12 @@ import {
   Typography,
   Paper,
   Chip,
+  Stack,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
 import { motion } from "framer-motion";
+import { FaStar, FaCodeBranch } from "react-icons/fa";
 import { tags } from "@/components/Tags"
 import type { Project } from "@/types/custom";
 
@@ -25,6 +27,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
   const visibleTags = project.tags.slice(0, maxVisibleTags);
   const extraTags = project.tags.slice(maxVisibleTags);
+  const hasStats = project.stats && (project.stats.stars !== undefined || project.stats.forks !== undefined);
 
   return (
     <motion.div
@@ -37,8 +40,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             p: 3,
             height: "100%",
             borderRadius: 2,
-            background: "rgba(255, 255, 255, 0.75)",
-            backdropFilter: "blur(8px)",
+            background: "#ffffff",
             transition: "box-shadow 0.3s ease",
             "&:hover": {
               boxShadow:
@@ -46,14 +48,48 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             },
           }}
         >
-          <Typography
-            variant="h6"
-            fontWeight={600}
-            color={theme.palette.primary.main}
-            gutterBottom
-          >
-            {project.title}
-          </Typography>
+          <Stack direction="row" justifyContent="space-between" alignItems="center" mb={1}>
+            <Typography
+              variant="h6"
+              fontWeight={600}
+              color={theme.palette.primary.main}
+            >
+              {project.title}
+            </Typography>
+            {hasStats && (
+              <Stack direction="row" spacing={1} alignItems="center">
+                {project.stats?.stars !== undefined && (
+                  <Box display="flex" alignItems="center" gap={0.5}>
+                    <FaStar size={13} color="#e3b341" />
+                    <Typography variant="caption" color="text.secondary">
+                      {project.stats.stars}
+                    </Typography>
+                  </Box>
+                )}
+                {project.stats?.forks !== undefined && (
+                  <Box display="flex" alignItems="center" gap={0.5}>
+                    <FaCodeBranch size={13} color="#8b949e" />
+                    <Typography variant="caption" color="text.secondary">
+                      {project.stats.forks}
+                    </Typography>
+                  </Box>
+                )}
+              </Stack>
+            )}
+          </Stack>
+
+          <Chip
+            label={project.category}
+            size="small"
+            variant="outlined"
+            sx={{
+              mb: 1.5,
+              fontSize: 11,
+              height: 20,
+              color: theme.palette.primary.main,
+              borderColor: theme.palette.primary.main,
+            }}
+          />
 
           <Typography
             variant="body2"
@@ -83,8 +119,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     padding: 1,
                     color: iconData.color,
                     borderColor: iconData.color,
-                    bgcolor: "rgba(255, 255, 255, 0.6)",
-                    backdropFilter: "blur(4px)",
+                    bgcolor: "#ffffff",
                     "& .MuiChip-icon": { color: iconData.color },
                   }}
                   variant="outlined"
@@ -102,8 +137,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   cursor: "pointer",
                   borderColor: theme.palette.primary.main,
                   color: theme.palette.primary.main,
-                  bgcolor: "rgba(255,255,255,0.6)",
-                  backdropFilter: "blur(4px)",
+                  bgcolor: "#ffffff",
                   zIndex: 100,
                 }}
               />

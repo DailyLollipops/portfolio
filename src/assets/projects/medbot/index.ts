@@ -1,7 +1,7 @@
 import type { Project } from "@/types/custom";
 
 import screenshot1 from "./1.png";
-import screenshot2 from "./2.png";
+import screenshot2 from "./2.jpg";
 import screenshot3 from "./3.png";
 import screenshot4 from "./4.png";
 import screenshot5 from "./5.png";
@@ -30,6 +30,8 @@ export const project: Project = {
     "https://github.com/DailyLollipops/medbot",
     "https://github.com/DailyLollipops/medbot-pro",
   ],
+  category: "IoT",
+  stats: { stars: 1 },
 };
 
 export default project;

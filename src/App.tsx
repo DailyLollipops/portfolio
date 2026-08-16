@@ -1,4 +1,5 @@
 import { HeroSection } from "./sections/Hero";
+import { StatsSection } from "./sections/Stats";
 import { ProjectsSection } from "./sections/Projects";
 import { WorkExperienceSection } from "./sections/WorkExperience";
 import { ContactSection } from "./sections/Contact";
@@ -10,6 +11,7 @@ const App = () => {
   return (
     <>
       <HeroSection />
+      <StatsSection />
       <ProjectsSection />
       <WorkExperienceSection />
       <ContactSection />

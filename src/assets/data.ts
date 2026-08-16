@@ -1,10 +1,20 @@
 import type { Experience, PortfolioData } from "@/types/custom";
 
 import profilePic from "@/assets/profile.jpg";
-import { project as medbotProject } from "@/assets/projects/medbot";
-import { project as bltsProject } from "@/assets/projects/blts";
-import { project as municlockProject } from "@/assets/projects/municlock";
-import { project as raspidevkitProject } from "@/assets/projects/raspidevkit";
+import { project as vclane } from "@/assets/projects/vclane";
+import { project as napiergrasspro } from "@/assets/projects/napiergrasspro";
+import { project as medbot } from "@/assets/projects/medbot";
+import { project as blts } from "@/assets/projects/blts";
+import { project as municlock } from "@/assets/projects/municlock";
+import { project as smartbin } from "@/assets/projects/smartbin";
+import { project as wifiLink } from "@/assets/projects/wifi-link";
+import { project as click2dine } from "@/assets/projects/click2dine";
+import { project as timekeeper } from "@/assets/projects/timekeeper";
+import { project as fastWebAdminTemplate } from "@/assets/projects/fast-web-admin-template";
+import { project as dolePulse } from "@/assets/projects/dole-pulse";
+import { project as petromaxxAdmin } from "@/assets/projects/petromaxx-admin";
+import { project as mswdash } from "@/assets/projects/mswdash";
+import { project as raspidevkit } from "@/assets/projects/raspidevkit";
 
 export const experiences: Experience[] = [
   {
@@ -51,9 +61,32 @@ export const portfolio: PortfolioData = {
     "I create scalable and maintainable digital solutions across web, mobile, and embedded platforms — built with performance and user experience in mind.",
   projectTagline:
     "A showcase of projects demonstrating end-to-end development skills—from web and mobile to embedded systems.",
-  tags: ["Python", "FastAPI", "React", "TypeScript", "Flutter", "Arduino"],
+  tags: [
+    "Python",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "Flutter",
+    "C++",
+    "Docker",
+  ],
   githubLink: "https://github.com/DailyLollipops",
   linkedInLink: "https://linkedin.com/in/clarence-madrigal-2b8643269",
-  projects: [medbotProject, bltsProject, municlockProject, raspidevkitProject],
+  projects: [
+    vclane,
+    napiergrasspro,
+    medbot,
+    blts,
+    municlock,
+    smartbin,
+    wifiLink,
+    click2dine,
+    timekeeper,
+    fastWebAdminTemplate,
+    dolePulse,
+    petromaxxAdmin,
+    mswdash,
+    raspidevkit,
+  ],
   experiences: experiences,
 };

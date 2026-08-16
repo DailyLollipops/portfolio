@@ -26,6 +26,8 @@ export const project: Project = {
     "https://github.com/DailyLollipops/BLTS",
     "https://github.com/DailyLollipops/BLTS-Installer",
   ],
+  category: "Web",
+  stats: { stars: 1, forks: 3 },
 };
 
 export default project;

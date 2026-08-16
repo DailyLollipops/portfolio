@@ -25,3 +25,9 @@ dist-ssr
 
 # Environment files
 .env
+
+# Local data / scratch (gathered GitHub data + captured screenshots)
+/data
+PROJECT-CATALOG.md
+preview.log
+preview.err

@@ -2,6 +2,13 @@ import { tags } from "../components/Tags";
 
 export type Tag = keyof typeof tags;
 
+export type ProjectCategory = "Web" | "Mobile" | "IoT" | "Desktop" | "Tools";
+
+export interface ProjectStats {
+  stars?: number;
+  forks?: number;
+}
+
 export interface Project {
   title: string;
   shortDesription?: string;
@@ -10,6 +17,8 @@ export interface Project {
   images: string[];
   tags: Tag[];
   links?: string[];
+  category: ProjectCategory;
+  stats?: ProjectStats;
 }
 
 export interface Experience {

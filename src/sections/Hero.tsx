@@ -100,12 +100,11 @@ export const HeroSection = () => {
               width: 80,
               height: 80,
               borderRadius: "50%",
-              background: "rgba(255, 255, 255, 0.65)",
+              background: "#ffffff",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
-              backdropFilter: "blur(5px)",
               ...blob,
               zIndex: 1,
             }}

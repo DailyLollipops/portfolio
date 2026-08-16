@@ -112,8 +112,7 @@ export const ContactSection = () => {
             maxWidth: 600,
             mx: "auto",
             borderRadius: 3,
-            backdropFilter: "blur(8px)",
-            background: "rgba(255,255,255,0.8)",
+            background: "#ffffff",
           }}
         >
           <form onSubmit={handleSubmit}>

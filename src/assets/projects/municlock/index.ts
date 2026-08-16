@@ -22,6 +22,7 @@ export const project: Project = {
     screenshot5,
     screenshot6,
   ],
+  category: "Desktop",
 };
 
 export default project;

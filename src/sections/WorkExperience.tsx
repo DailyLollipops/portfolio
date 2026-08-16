@@ -126,8 +126,7 @@ export const WorkExperienceSection = () => {
                 <Box
                   sx={{
                     pl: 5,
-                    bgcolor: "rgba(255,255,255,0.75)",
-                    backdropFilter: "blur(8px)",
+                    bgcolor: "#ffffff",
                     borderRadius: 3,
                     p: { xs: 2, md: 3 },
                     boxShadow: "0 8px 20px rgba(0,0,0,0.05)",
@@ -165,8 +164,7 @@ export const WorkExperienceSection = () => {
                             padding: 1,
                             color: iconData.color,
                             borderColor: iconData.color,
-                            bgcolor: "rgba(255, 255, 255, 0.6)",
-                            backdropFilter: "blur(4px)",
+                            bgcolor: "#ffffff",
                             "& .MuiChip-icon": { color: iconData.color },
                           }}
                           variant="outlined"

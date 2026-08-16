@@ -39,8 +39,7 @@ const ArrowButton = ({
       [direction]: 12,
       transform: "translateY(-50%)",
       zIndex: 2,
-      backgroundColor: "rgba(255,255,255,0.7)",
-      backdropFilter: "blur(6px)",
+      backgroundColor: "#ffffff",
       border: "1px solid rgba(0,0,0,0.1)",
       "&:hover": {
         backgroundColor: "rgba(255,255,255,0.95)",
@@ -135,8 +134,7 @@ export const ProjectDetailsDialog = ({ open, onClose, project }: ProjectDetailsD
           sx: {
             borderRadius: 3,
             overflow: "hidden",
-            background: "rgba(255,255,255,0.9)",
-            backdropFilter: "blur(8px)",
+            background: "#ffffff",
           },
         },
       }}
@@ -230,8 +228,7 @@ export const ProjectDetailsDialog = ({ open, onClose, project }: ProjectDetailsD
                     sx: {
                       borderRadius: 2,
                       boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
-                      backgroundColor: "rgba(255,255,255,0.95)",
-                      backdropFilter: "blur(6px)",
+                      backgroundColor: "#ffffff",
                     },
                   }
                 }}

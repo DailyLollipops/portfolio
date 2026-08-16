@@ -1,14 +1,26 @@
 import { useState } from "react";
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Typography, Grid, Chip, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import { ProjectCard } from "../components/ProjectCard";
 import { ProjectDetailsDialog } from "../components/ProjectDetailsDialog";
-import type { Project } from "../types/custom";
+import type { Project, ProjectCategory } from "../types/custom";
 import { portfolio } from "../assets/data";
+
+const categories: (ProjectCategory | "All")[] = [
+  "All",
+  "Web",
+  "Mobile",
+  "IoT",
+  "Desktop",
+  "Tools",
+];
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [open, setOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<ProjectCategory | "All">(
+    "All"
+  );
 
   const handleOpen = (project: Project) => {
     setSelectedProject(project);
@@ -19,6 +31,11 @@ export const ProjectsSection = () => {
     setOpen(false);
     setSelectedProject(null);
   };
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? portfolio.projects
+      : portfolio.projects.filter((p) => p.category === activeCategory);
 
   return (
     <Box
@@ -62,7 +79,7 @@ export const ProjectsSection = () => {
       </Box>
 
       {/* Section Header */}
-      <Box position="relative" zIndex={2} textAlign="center" mb={6}>
+      <Box position="relative" zIndex={2} textAlign="center" mb={4}>
         <Typography variant="h4" fontWeight={700} color="#0d47a1" gutterBottom>
           Projects
         </Typography>
@@ -71,14 +88,35 @@ export const ProjectsSection = () => {
           color="text.secondary"
           maxWidth={600}
           mx="auto"
+          mb={3}
         >
           {portfolio.projectTagline}
         </Typography>
+
+        {/* Category Filter */}
+        <Stack
+          direction="row"
+          spacing={1}
+          justifyContent="center"
+          flexWrap="wrap"
+          gap={1}
+        >
+          {categories.map((cat) => (
+            <Chip
+              key={cat}
+              label={cat}
+              onClick={() => setActiveCategory(cat)}
+              variant={activeCategory === cat ? "filled" : "outlined"}
+              color={activeCategory === cat ? "primary" : "default"}
+              sx={{ borderRadius: 2, fontWeight: 600 }}
+            />
+          ))}
+        </Stack>
       </Box>
 
       {/* Project Grid */}
       <Grid container spacing={4} position="relative" zIndex={2}>
-        {portfolio.projects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={index}>
             <ProjectCard
               project={project}

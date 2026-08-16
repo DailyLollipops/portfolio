@@ -11,6 +11,8 @@ export const project: Project = {
   tags: ["Python", "Arduino", "RaspberryPi"],
   images: [screenshot1],
   links: ["https://github.com/raspidevkit/raspidevkit"],
+  category: "Tools",
+  stats: { stars: 1 },
 };
 
 export default project;

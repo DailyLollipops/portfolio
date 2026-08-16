@@ -8,11 +8,37 @@ import {
   Stack,
   Snackbar,
   Alert,
+  useTheme,
 } from "@mui/material";
-import { motion } from "framer-motion";
+import { FaRegPaperPlane } from "react-icons/fa";
 import emailjs from "emailjs-com";
 
+const Field = ({
+  label,
+  htmlFor,
+  children,
+}: {
+  label: string;
+  htmlFor: string;
+  children: React.ReactNode;
+}) => (
+  <Box>
+    <Typography
+      component="label"
+      htmlFor={htmlFor}
+      variant="body2"
+      fontWeight={600}
+      display="block"
+      mb={1}
+    >
+      {label}
+    </Typography>
+    {children}
+  </Box>
+);
+
 export const ContactSection = () => {
+  const theme = useTheme();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<{ open: boolean; success: boolean }>({
@@ -51,84 +77,68 @@ export const ContactSection = () => {
   };
 
   return (
-    <Box
-      id="contact"
-      py={10}
-      position="relative"
-      sx={{
-        background: "linear-gradient(135deg, #e3f2fd 0%, #f9fafb 100%)",
-        overflow: "hidden",
-      }}
-    >
-      {/* --- Animated background blobs --- */}
-      <Box sx={{ display: { xs: "none", sm: "block" } }}>
-        <motion.div
-          style={{
-            position: "absolute",
-            width: 260,
-            height: 260,
-            borderRadius: "50%",
-            background: "rgba(33,150,243,0.25)",
-            top: "10%",
-            left: "10%",
-            zIndex: 0,
-          }}
-          animate={{ y: [0, 30, 0], x: [0, -20, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          style={{
-            position: "absolute",
-            width: 220,
-            height: 220,
-            borderRadius: "50%",
-            background: "rgba(3,169,244,0.2)",
-            bottom: "20%",
-            right: "15%",
-            zIndex: 0,
-          }}
-          animate={{ y: [0, -25, 0], x: [0, 25, 0] }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </Box>
+    <Box id="contact" pt={4} pb={8}>
+      <Typography variant="h2" mb={1}>
+        Contact
+      </Typography>
+      <Typography variant="body2" color="text.secondary" mb={4}>
+        Have a question or want to collaborate? Open a new “issue” below — send
+        me a message.
+      </Typography>
 
-      {/* --- Contact Form --- */}
-      <Box position="relative" zIndex={2} textAlign="center">
-        <Typography variant="h4" fontWeight={700} gutterBottom color="#0d47a1">
-          Contact Me
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          color="text.secondary"
-          mb={4}
-        >
-          Have a question or want to collaborate? Send me a message below 👇
-        </Typography>
-
-        <Paper
-          elevation={3}
+      <Paper
+        sx={{
+          p: { xs: 2, sm: 3 },
+          borderRadius: 1,
+          border: "1px solid",
+          borderColor: "divider",
+          backgroundColor: "background.paper",
+          maxWidth: 720,
+        }}
+      >
+        {/* GitHub-style editor tab bar */}
+        <Box
+          display="flex"
+          alignItems="center"
+          mb={2}
           sx={{
-            p: { xs: 3, sm: 4 },
-            maxWidth: 600,
-            mx: "auto",
-            borderRadius: 3,
-            background: "#ffffff",
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: "6px 6px 0 0",
+            backgroundColor:
+              theme.palette.mode === "dark" ? "#161b22" : "#f6f8fa",
+            px: 2,
+            py: 1,
           }}
         >
-          <form onSubmit={handleSubmit}>
-            <Stack spacing={3}>
+          <Typography variant="caption" fontWeight={600} color="text.primary">
+            Write a message
+          </Typography>
+          <Box flex={1} />
+          <Typography variant="caption" color="text.secondary">
+            Markdown supported
+          </Typography>
+        </Box>
+
+        <form onSubmit={handleSubmit}>
+          <Stack spacing={2.5}>
+            <Field label="Your name" htmlFor="contact-name">
               <TextField
+                id="contact-name"
                 name="name"
-                label="Your Name"
+                placeholder="Jane Doe"
                 fullWidth
                 variant="outlined"
                 value={form.name}
                 onChange={handleChange}
                 required
               />
+            </Field>
+            <Field label="Your email" htmlFor="contact-email">
               <TextField
+                id="contact-email"
                 name="email"
-                label="Your Email"
+                placeholder="you@example.com"
                 type="email"
                 fullWidth
                 variant="outlined"
@@ -136,48 +146,60 @@ export const ContactSection = () => {
                 onChange={handleChange}
                 required
               />
+            </Field>
+            <Field label="Message" htmlFor="contact-message">
               <TextField
+                id="contact-message"
                 name="message"
-                label="Message"
+                placeholder="Tell me about your project…"
                 fullWidth
                 multiline
-                minRows={4}
+                minRows={5}
                 variant="outlined"
                 value={form.message}
                 onChange={handleChange}
                 required
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    borderTopLeftRadius: 0,
+                    borderTopRightRadius: 0,
+                  },
+                }}
               />
+            </Field>
+
+            <Box display="flex" justifyContent="flex-end">
               <Button
                 variant="contained"
-                size="large"
+                color="secondary"
+                size="medium"
                 type="submit"
                 disabled={loading}
-                component={motion.button}
-                whileHover={{ scale: 1.05 }}
+                startIcon={!loading ? <FaRegPaperPlane size={13} /> : undefined}
               >
-                {loading ? "Sending..." : "Send Message"}
+                {loading ? "Sending…" : "Send message"}
               </Button>
-            </Stack>
-          </form>
-        </Paper>
+            </Box>
+          </Stack>
+        </form>
+      </Paper>
 
-        <Snackbar
-          open={feedback.open}
-          autoHideDuration={4000}
+      <Snackbar
+        open={feedback.open}
+        autoHideDuration={4000}
+        onClose={() => setFeedback({ ...feedback, open: false })}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
           onClose={() => setFeedback({ ...feedback, open: false })}
-          anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          severity={feedback.success ? "success" : "error"}
+          variant="filled"
         >
-          <Alert
-            onClose={() => setFeedback({ ...feedback, open: false })}
-            severity={feedback.success ? "success" : "error"}
-            variant="filled"
-          >
-            {feedback.success
-              ? "Message sent successfully! 🚀"
-              : "Failed to send message. Please try again."}
-          </Alert>
-        </Snackbar>
-      </Box>
+          {feedback.success
+            ? "Message sent successfully!"
+            : "Failed to send message. Please try again."}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

@@ -56,11 +56,15 @@ export const experiences: Experience[] = [
 
 export const portfolio: PortfolioData = {
   name: "Clarence Madrigal",
+  login: "DailyLollipops",
   profilePic: profilePic,
   heroTagline:
     "I create scalable and maintainable digital solutions across web, mobile, and embedded platforms — built with performance and user experience in mind.",
   projectTagline:
     "A showcase of projects demonstrating end-to-end development skills—from web and mobile to embedded systems.",
+  location: "Marinduque, Philippines",
+  email: "clarencemadrigal.dev@gmail.com",
+  blog: "https://github.com/DailyLollipops",
   tags: [
     "Python",
     "FastAPI",

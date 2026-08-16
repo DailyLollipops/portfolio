@@ -1,6 +1,6 @@
 import { Box, Typography, Link, useTheme } from "@mui/material";
+import { FaGithub, FaLinkedin, FaHeart } from "react-icons/fa";
 import { portfolio } from "@/assets/data";
-
 
 export const Footer = () => {
   const theme = useTheme();
@@ -9,50 +9,59 @@ export const Footer = () => {
     <Box
       component="footer"
       sx={{
+        borderTop: "1px solid",
+        borderColor: "divider",
         py: 4,
-        textAlign: "center",
-        background: theme.palette.primary.dark,
-        color: "white",
+        px: 2,
       }}
     >
-      <Typography
-        variant="body2"
+      <Box
         sx={{
-          opacity: 0.9,
+          maxWidth: 1280,
+          mx: "auto",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 2,
         }}
       >
-        © {new Date().getFullYear()} {portfolio.name} — Built with React & MUI
-      </Typography>
+        <Typography variant="body2" color="text.secondary">
+          © {new Date().getFullYear()} {portfolio.name}
+        </Typography>
 
-      <Box mt={1}>
-        <Link
-          href={portfolio.githubLink}
-          target="_blank"
-          underline="none"
-          sx={{
-            mx: 1.5,
-            color: "white",
-            fontWeight: 500,
-            transition: "color 0.3s ease",
-            "&:hover": { color: theme.palette.secondary.light },
-          }}
-        >
-          GitHub
-        </Link>
-        <Link
-          href={portfolio.linkedInLink}
-          target="_blank"
-          underline="none"
-          sx={{
-            mx: 1.5,
-            color: "white",
-            fontWeight: 500,
-            transition: "color 0.3s ease",
-            "&:hover": { color: theme.palette.secondary.light },
-          }}
-        >
-          LinkedIn
-        </Link>
+        <Box display="flex" alignItems="center" gap={2}>
+          <Link
+            href={portfolio.githubLink}
+            target="_blank"
+            sx={{ display: "flex", alignItems: "center", gap: 0.75 }}
+          >
+            <FaGithub size={14} />
+          </Link>
+          <Link
+            href={portfolio.linkedInLink}
+            target="_blank"
+            sx={{ display: "flex", alignItems: "center", gap: 0.75 }}
+          >
+            <FaLinkedin size={14} />
+          </Link>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
+          >
+            Built with React, TypeScript & MUI
+            <Box
+              component="span"
+              sx={{
+                color:
+                  theme.palette.mode === "dark" ? "#f85149" : "#d1242f",
+              }}
+            >
+              <FaHeart size={11} />
+            </Box>
+          </Typography>
+        </Box>
       </Box>
     </Box>
   );

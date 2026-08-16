@@ -31,9 +31,13 @@ export interface Experience {
 
 export interface PortfolioData {
   name: string;
+  login: string;
   profilePic: string;
   heroTagline: string;
   projectTagline: string;
+  location: string;
+  email: string;
+  blog: string;
   tags: Tag[];
   githubLink: string;
   linkedInLink: string;

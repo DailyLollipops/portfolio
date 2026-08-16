@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Box, Typography, Grid, Chip, Stack } from "@mui/material";
-import { motion } from "framer-motion";
+import { Box, Typography, Paper, Stack, useTheme } from "@mui/material";
+import { FiBookmark } from "react-icons/fi";
+import { FaStar, FaCodeBranch } from "react-icons/fa";
 import { ProjectCard } from "../components/ProjectCard";
-import { ProjectDetailsDialog } from "../components/ProjectDetailsDialog";
 import type { Project, ProjectCategory } from "../types/custom";
 import { portfolio } from "../assets/data";
 
@@ -15,144 +15,264 @@ const categories: (ProjectCategory | "All")[] = [
   "Tools",
 ];
 
-export const ProjectsSection = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [open, setOpen] = useState(false);
+interface ProjectsPanelProps {
+  query?: string;
+  onProjectSelect?: (project: Project) => void;
+}
+
+export const ProjectsPanel = ({
+  query = "",
+  onProjectSelect,
+}: ProjectsPanelProps) => {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory | "All">(
     "All"
   );
 
-  const handleOpen = (project: Project) => {
-    setSelectedProject(project);
-    setOpen(true);
-  };
+  const q = query.trim().toLowerCase();
+  const filteredProjects = portfolio.projects.filter((p) => {
+    const matchesCategory =
+      activeCategory === "All" || p.category === activeCategory;
+    const matchesQuery =
+      !q ||
+      p.title.toLowerCase().includes(q) ||
+      (p.shortDesription || p.description || "")
+        .toLowerCase()
+        .includes(q) ||
+      p.tags.some((t) => t.toLowerCase().includes(q));
+    return matchesCategory && matchesQuery;
+  });
 
-  const handleClose = () => {
-    setOpen(false);
-    setSelectedProject(null);
-  };
+  const select = (project: Project) => onProjectSelect?.(project);
 
-  const filteredProjects =
-    activeCategory === "All"
-      ? portfolio.projects
-      : portfolio.projects.filter((p) => p.category === activeCategory);
+  return (
+    <Box id="projects" pt={4}>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        mb={2}
+        flexWrap="wrap"
+        gap={1}
+      >
+        <Typography variant="h2">Projects</Typography>
+        <Typography variant="body2" color="text.secondary">
+          {filteredProjects.length}{" "}
+          {filteredProjects.length === 1 ? "project" : "projects"}
+        </Typography>
+      </Box>
+
+      <Stack direction="row" flexWrap="wrap" gap={1} mb={3}>
+        {categories.map((cat) => (
+          <CategoryChip
+            key={cat}
+            label={cat}
+            active={activeCategory === cat}
+            onClick={() => setActiveCategory(cat)}
+          />
+        ))}
+      </Stack>
+
+      {filteredProjects.length === 0 ? (
+        <Paper
+          sx={{
+            p: 6,
+            textAlign: "center",
+            border: "1px dashed",
+            borderColor: "divider",
+            borderRadius: 1,
+          }}
+        >
+          <Typography variant="body1" color="text.secondary">
+            No matching projects found.
+          </Typography>
+        </Paper>
+      ) : (
+        <Box>
+          {/* Grid view (used for larger screens) */}
+          <Box
+            display={{ xs: "none", md: "grid" }}
+            gridTemplateColumns="repeat(2, 1fr)"
+            gap={2.5}
+          >
+            {filteredProjects.map((project) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                onClick={() => select(project)}
+              />
+            ))}
+          </Box>
+
+          {/* List view (mobile) */}
+          <Paper
+            sx={{
+              display: { xs: "block", md: "none" },
+              borderRadius: 1,
+              border: "1px solid",
+              borderColor: "divider",
+              overflow: "hidden",
+            }}
+          >
+            {filteredProjects.map((project, index) => (
+              <RepoRow
+                key={project.title}
+                project={project}
+                divider={index < filteredProjects.length - 1}
+                onClick={() => select(project)}
+              />
+            ))}
+          </Paper>
+        </Box>
+      )}
+    </Box>
+  );
+};
+
+const CategoryChip = ({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) => {
+  const theme = useTheme();
+  return (
+    <Box
+      component="button"
+      onClick={onClick}
+      sx={{
+        cursor: "pointer",
+        fontSize: 14,
+        fontWeight: 500,
+        px: 1.5,
+        py: 0.75,
+        borderRadius: 1,
+        color: active ? "#ffffff" : theme.palette.text.secondary,
+        backgroundColor: active
+          ? theme.palette.mode === "dark"
+            ? "#1f6feb"
+            : "#0969da"
+          : "transparent",
+        border: "1px solid",
+        borderColor: active
+          ? "transparent"
+          : theme.palette.mode === "dark"
+            ? "#30363d"
+            : "#d0d7de",
+        "&:hover": {
+          color: theme.palette.text.primary,
+          backgroundColor: active ? undefined : theme.palette.background.paper,
+        },
+      }}
+    >
+      {label}
+    </Box>
+  );
+};
+
+const RepoRow = ({
+  project,
+  divider,
+  onClick,
+}: {
+  project: Project;
+  divider: boolean;
+  onClick: () => void;
+}) => {
+  const theme = useTheme();
+  const hasStats =
+    project.stats &&
+    (project.stats.stars !== undefined || project.stats.forks !== undefined);
 
   return (
     <Box
-      id="projects"
-      position="relative"
-      overflow="hidden"
-      py={10}
-      px={{ xs: 2, md: 6 }}
-      sx={{ background: "linear-gradient(135deg, #e3f2fd 0%, #f1f8ff 100%)" }}
+      onClick={onClick}
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        p: 2.5,
+        cursor: "pointer",
+        borderBottom: divider ? "1px solid" : "none",
+        borderColor: "divider",
+        transition: "background-color 0.15s ease",
+        "&:hover": {
+          backgroundColor:
+            theme.palette.mode === "dark" ? "#1c2128" : "#f6f8fa",
+        },
+      }}
     >
-      {/* Background Blobs */}
-      <Box sx={{ display: { xs: "none", sm: "block" } }}>
-        <motion.div
-          style={{
-            position: "absolute",
-            width: 320,
-            height: 320,
-            borderRadius: "50%",
-            background: "rgba(100, 181, 246, 0.25)",
-            top: "8%",
-            left: "10%",
-            zIndex: 0,
-          }}
-          animate={{ y: [0, 25, 0], x: [0, 15, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          style={{
-            position: "absolute",
-            width: 300,
-            height: 300,
-            borderRadius: "50%",
-            background: "rgba(187, 222, 251, 0.3)",
-            bottom: "10%",
-            right: "8%",
-            zIndex: 0,
-          }}
-          animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
+      <Box component="span" sx={{ color: theme.palette.text.secondary, display: "flex" }}>
+        <FiBookmark size={16} />
       </Box>
-
-      {/* Section Header */}
-      <Box position="relative" zIndex={2} textAlign="center" mb={4}>
-        <Typography variant="h4" fontWeight={700} color="#0d47a1" gutterBottom>
-          Projects
-        </Typography>
+      <Box flex={1} minWidth={0}>
+        <Box display="flex" alignItems="center" gap={1.5} minWidth={0}>
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: 600,
+              color: theme.palette.primary.main,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {project.title}
+          </Typography>
+          <Typography variant="caption" color="text.secondary">
+            {project.category}
+          </Typography>
+          {hasStats && (
+            <Box display="flex" alignItems="center" gap={1} ml="auto" color="text.secondary" flexShrink={0}>
+              {project.stats?.stars !== undefined && (
+                <Box display="flex" alignItems="center" gap={0.4}>
+                  <FaStar size={12} />
+                  <Typography variant="caption">{project.stats.stars}</Typography>
+                </Box>
+              )}
+              {project.stats?.forks !== undefined && (
+                <Box display="flex" alignItems="center" gap={0.4}>
+                  <FaCodeBranch size={12} />
+                  <Typography variant="caption">{project.stats.forks}</Typography>
+                </Box>
+              )}
+            </Box>
+          )}
+        </Box>
         <Typography
-          variant="subtitle1"
+          variant="body2"
           color="text.secondary"
-          maxWidth={600}
-          mx="auto"
-          mb={3}
+          sx={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            mb: 1,
+          }}
         >
-          {portfolio.projectTagline}
+          {project.shortDesription || project.description}
         </Typography>
-
-        {/* Category Filter */}
-        <Stack
-          direction="row"
-          spacing={1}
-          justifyContent="center"
-          flexWrap="wrap"
-          gap={1}
-        >
-          {categories.map((cat) => (
-            <Chip
-              key={cat}
-              label={cat}
-              onClick={() => setActiveCategory(cat)}
-              variant={activeCategory === cat ? "filled" : "outlined"}
-              color={activeCategory === cat ? "primary" : "default"}
-              sx={{ borderRadius: 2, fontWeight: 600 }}
-            />
+        <Box display="flex" flexWrap="wrap" gap={0.75}>
+          {project.tags.slice(0, 4).map((tag) => (
+            <Box
+              key={tag}
+              component="span"
+              sx={{
+                fontSize: 11,
+                fontWeight: 500,
+                color: theme.palette.primary.main,
+                border: "1px solid",
+                borderColor: theme.palette.mode === "dark" ? "#30363d" : "#d0d7de",
+                borderRadius: "2em",
+                px: 1,
+              }}
+            >
+              {tag}
+            </Box>
           ))}
-        </Stack>
+        </Box>
       </Box>
-
-      {/* Project Grid */}
-      <Grid container spacing={4} position="relative" zIndex={2}>
-        {filteredProjects.map((project, index) => (
-          <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={index}>
-            <ProjectCard
-              project={project}
-              onClick={() => handleOpen(project)}
-            />
-          </Grid>
-        ))}
-      </Grid>
-
-      {/* Disclaimer */}
-      <Box
-        textAlign="center"
-        mt={8}
-        position="relative"
-        zIndex={2}
-        sx={{
-          maxWidth: 700,
-          mx: "auto",
-          px: 2,
-          color: "text.secondary",
-          fontSize: "0.9rem",
-          fontStyle: "italic",
-        }}
-      >
-        <Typography variant="body2">
-          <strong>Note:</strong> Some projects are not displayed here due to
-          non-disclosure agreements and client confidentiality.
-        </Typography>
-      </Box>
-
-      {/* Dialog */}
-      <ProjectDetailsDialog
-        open={open}
-        onClose={handleClose}
-        project={selectedProject}
-      />
     </Box>
   );
 };

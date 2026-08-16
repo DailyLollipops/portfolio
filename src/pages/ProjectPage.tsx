@@ -43,14 +43,20 @@ export const ProjectPage = () => {
             gap={2}
             flexWrap="wrap"
           >
-            <Link
-              to="/"
-              style={{
+            <Box
+              component="button"
+              type="button"
+              onClick={() => navigate(-1)}
+              sx={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 6,
-                fontSize: 14,
-                textDecoration: "none",
+                gap: 1,
+                p: 0,
+                m: 0,
+                border: "none",
+                background: "none",
+                cursor: "pointer",
+                fontFamily: "inherit",
               }}
             >
               <FiArrowLeft size={14} />
@@ -65,7 +71,7 @@ export const ProjectPage = () => {
               >
                 Back to profile
               </Typography>
-            </Link>
+            </Box>
           </Box>
 
           <Box

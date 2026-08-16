@@ -161,4 +161,38 @@ npm run preview
 
 ## License
 
-Personal project — modify as needed.
+Personal project - modify as needed.
+
+---
+
+## 📊 GitHub stats (auto-refresh)
+
+The profile stats, contribution calendar and top languages live in `src/assets/github-stats.ts`. This file is generated from the GitHub API, not edited by hand.
+
+### How it works
+
+- A GitHub Actions workflow (`.github/workflows/update-github-stats.yml`) runs **daily at 00:00 UTC** (and on every push / manual `workflow_dispatch`).
+- It runs `scripts/update-github-stats.mjs`, which:
+  - fetches your profile + contribution calendar via the GraphQL API (this already includes contributions made in organizations),
+  - paginates all repos you own **and** repos in organizations you belong to, aggregating their language bytes (so org work shows up in the top-languages chart and repo/stars counts),
+  - regenerates `src/assets/github-stats.ts`.
+- If the file changed it is committed and pushed, which triggers the Pages deploy so the site stays fresh.
+
+### One-time setup: PAT secret
+
+The workflow needs a GitHub token to read **private** repos and private contributions. The built-in `GITHUB_TOKEN` is scoped to this repository only, so create a **classic Personal Access Token**:
+
+1. Go to https://github.com/settings/tokens and click **Generate new token (classic)**.
+2. Give it the `repo` scope (it can be repo-scoped; no admin scopes needed).
+3. Copy the token and add it as a repository secret named `GH_PAT`
+   (repo **Settings → Secrets and variables → Actions → New repository secret**).
+
+Without `GH_PAT`, the workflow still runs but only shows public data.
+
+### Refreshing locally
+
+```sh
+npm run update:stats
+```
+
+The script uses `GH_PAT`/`GITHUB_TOKEN` if set, otherwise falls back to your `gh` CLI login. Run `gh auth login` first if you haven't. A GitHub token is required because the contribution calendar (including private contributions) is not available to anonymous requests.

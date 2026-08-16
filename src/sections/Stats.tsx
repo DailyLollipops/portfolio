@@ -2,6 +2,8 @@ import { Box, Paper, Tooltip, Typography } from "@mui/material";
 import { FiCalendar } from "react-icons/fi";
 import { githubStats } from "@/assets/github-stats";
 
+const lastUpdated = new Date(githubStats.updatedAt).toLocaleDateString();
+
 const heatColor = (count: number) => {
   if (count === 0) return "#161b22";
   if (count <= 3) return "#0e4429";
@@ -18,6 +20,11 @@ const heatColorLight = (count: number) => {
   return "#216e39";
 };
 
+const monthOf = (date: string) => {
+  const [y, m] = date.split("-").map(Number);
+  return new Date(y, m - 1, 1).toLocaleString("en-US", { month: "short" });
+};
+
 export const ContributionCard = ({ dark = true }: { dark?: boolean }) => {
   const days = githubStats.calendar;
   const weeks: { date: string; count: number }[][] = [];
@@ -25,6 +32,18 @@ export const ContributionCard = ({ dark = true }: { dark?: boolean }) => {
     weeks.push(days.slice(i, i + 7));
   }
   const color = (c: number) => (dark ? heatColor(c) : heatColorLight(c));
+
+  const monthLabels: (string | null)[] = [];
+  let prevMonth = "";
+  for (const week of weeks) {
+    const month = monthOf(week[week.length - 1].date);
+    if (month !== prevMonth) {
+      monthLabels.push(month);
+      prevMonth = month;
+    } else {
+      monthLabels.push(null);
+    }
+  }
 
   return (
     <Paper
@@ -40,35 +59,79 @@ export const ContributionCard = ({ dark = true }: { dark?: boolean }) => {
         <Typography variant="h6">
           {githubStats.totalContributions.toLocaleString()} contributions in the last year
         </Typography>
-        <Box display="flex" alignItems="center" gap={0.5} color="text.secondary">
-          <FiCalendar size={14} />
-          <Typography variant="caption">Contributions</Typography>
+        <Box display="flex" flexDirection="column" alignItems="flex-end" color="text.secondary">
+          <Box display="flex" alignItems="center" gap={0.5}>
+            <FiCalendar size={14} />
+            <Typography variant="caption">Contributions</Typography>
+          </Box>
+          <Typography variant="caption">Updated {lastUpdated}</Typography>
         </Box>
       </Box>
 
       <Box sx={{ overflowX: "auto", pb: 1 }}>
-        <Box display="flex" gap={1.5} sx={{ minWidth: "max-content", width: "max-content" }}>
-          {weeks.map((week, wi) => (
-            <Box key={wi} display="flex" flexDirection="column" gap={1.5}>
-              {week.map((day) => (
-                <Tooltip
-                  key={day.date}
-                  title={`${day.count} contributions on ${day.date}`}
-                  arrow
-                  enterDelay={200}
-                >
-                  <Box
-                    sx={{
-                      width: 11,
-                      height: 11,
-                      borderRadius: 0.5,
-                      backgroundColor: color(day.count),
-                    }}
-                  />
-                </Tooltip>
+        <Box display="flex" sx={{ minWidth: "max-content", width: "max-content" }}>
+          <Box display="flex" flexDirection="column" gap={1.5} mr={1}>
+            <Box sx={{ height: 14, mb: 1 }} />
+            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((label, i) => (
+              <Typography
+                key={label}
+                variant="caption"
+                sx={{
+                  height: 11,
+                  lineHeight: "11px",
+                  fontSize: 10,
+                  color: "text.secondary",
+                  visibility: i === 1 || i === 3 || i === 5 ? "visible" : "hidden",
+                }}
+              >
+                {label}
+              </Typography>
+            ))}
+          </Box>
+          <Box>
+            <Box display="flex" gap={1.5} mb={1} sx={{ height: 14 }}>
+              {monthLabels.map((label, wi) => (
+                <Box key={wi} sx={{ width: 11, flexShrink: 0 }}>
+                  {label && (
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        fontSize: 10,
+                        lineHeight: 1,
+                        color: "text.secondary",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {label}
+                    </Typography>
+                  )}
+                </Box>
               ))}
             </Box>
-          ))}
+            <Box display="flex" gap={1.5}>
+              {weeks.map((week, wi) => (
+                <Box key={wi} display="flex" flexDirection="column" gap={1.5}>
+                  {week.map((day) => (
+                    <Tooltip
+                      key={day.date}
+                      title={`${day.count} contributions on ${day.date}`}
+                      arrow
+                      enterDelay={200}
+                    >
+                      <Box
+                        sx={{
+                          width: 11,
+                          height: 11,
+                          borderRadius: 0.5,
+                          backgroundColor: color(day.count),
+                        }}
+                      />
+                    </Tooltip>
+                  ))}
+                </Box>
+              ))}
+            </Box>
+          </Box>
         </Box>
       </Box>
 
@@ -100,6 +163,34 @@ const languageColors: Record<string, string> = {
   Shell: "#89E051",
 };
 
+const LanguageTooltip = ({
+  lang,
+}: {
+  lang: { name: string; pct: number; projects: string[] };
+}) => {
+  const shown = lang.projects.slice(0, 10);
+  const remaining = lang.projects.length - shown.length;
+  return (
+    <Box>
+      <Typography sx={{ fontWeight: 600, fontSize: 12, mb: 0.5 }}>
+        {lang.name} &mdash; {lang.pct}%
+      </Typography>
+      <Box component="ul" sx={{ m: 0, pl: 2, maxHeight: 220, overflow: "auto" }}>
+        {shown.map((project) => (
+          <Typography key={project} component="li" sx={{ fontSize: 12, lineHeight: 1.5 }}>
+            {project}
+          </Typography>
+        ))}
+      </Box>
+      {remaining > 0 && (
+        <Typography sx={{ fontSize: 12, color: "text.secondary", mt: 0.5 }}>
+          +{remaining} more
+        </Typography>
+      )}
+    </Box>
+  );
+};
+
 export const LanguageCard = () => {
   const languages = githubStats.languages;
 
@@ -113,9 +204,12 @@ export const LanguageCard = () => {
         backgroundColor: "background.default",
       }}
     >
-      <Typography variant="h6" mb={2}>
-        Top languages
-      </Typography>
+      <Box display="flex" alignItems="center" justifyContent="space-between" mb={2}>
+        <Typography variant="h6">Top languages</Typography>
+        <Typography variant="caption" color="text.secondary">
+          Updated {lastUpdated}
+        </Typography>
+      </Box>
 
       <Box
         display="flex"
@@ -126,34 +220,38 @@ export const LanguageCard = () => {
         sx={{ backgroundColor: "divider" }}
       >
         {languages.map((lang) => (
-          <Box
-            key={lang.name}
-            sx={{
-              width: `${lang.pct}%`,
-              backgroundColor: languageColors[lang.name] ?? "#6E7681",
-            }}
-          />
+          <Tooltip key={lang.name} title={<LanguageTooltip lang={lang} />} arrow enterDelay={200}>
+            <Box
+              sx={{
+                width: `${lang.pct}%`,
+                backgroundColor: languageColors[lang.name] ?? "#6E7681",
+                "&:hover": { filter: "brightness(1.2)" },
+              }}
+            />
+          </Tooltip>
         ))}
       </Box>
 
       <Box display="flex" flexWrap="wrap" gap="4px 16px">
         {languages.map((lang) => (
-          <Box key={lang.name} display="flex" alignItems="center" gap={0.75}>
-            <Box
-              sx={{
-                width: 12,
-                height: 12,
-                borderRadius: "50%",
-                backgroundColor: languageColors[lang.name] ?? "#6E7681",
-              }}
-            />
-            <Typography variant="body2" sx={{ fontWeight: 500 }}>
-              {lang.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {lang.pct}%
-            </Typography>
-          </Box>
+          <Tooltip key={lang.name} title={<LanguageTooltip lang={lang} />} arrow enterDelay={200}>
+            <Box display="flex" alignItems="center" gap={0.75} sx={{ cursor: "pointer" }}>
+              <Box
+                sx={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  backgroundColor: languageColors[lang.name] ?? "#6E7681",
+                }}
+              />
+              <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                {lang.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {lang.pct}%
+              </Typography>
+            </Box>
+          </Tooltip>
         ))}
       </Box>
     </Paper>

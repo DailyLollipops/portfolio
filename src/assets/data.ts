@@ -76,6 +76,7 @@ export const portfolio: PortfolioData = {
   ],
   githubLink: "https://github.com/DailyLollipops",
   linkedInLink: "https://linkedin.com/in/clarence-madrigal-2b8643269",
+  resumeLink: `${import.meta.env.BASE_URL}resume.pdf`,
   projects: [
     vclane,
     napiergrasspro,

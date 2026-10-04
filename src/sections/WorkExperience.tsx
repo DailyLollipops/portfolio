@@ -1,4 +1,12 @@
-import { Box, Paper, Typography, Stack, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Paper,
+  Typography,
+  Stack,
+  useTheme,
+} from "@mui/material";
+import { FiDownload } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { portfolio } from "../assets/data";
 
@@ -7,9 +15,26 @@ export const WorkExperienceSection = () => {
 
   return (
     <Box id="experience" pt={4}>
-      <Typography variant="h2" mb={1}>
-        Work Experience
-      </Typography>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        flexWrap="wrap"
+        gap={1}
+        mb={1}
+      >
+        <Typography variant="h2">Work Experience</Typography>
+        <Button
+          variant="outlined"
+          size="small"
+          href={portfolio.resumeLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          startIcon={<FiDownload size={14} />}
+        >
+          Resume
+        </Button>
+      </Box>
       <Typography variant="body2" color="text.secondary" mb={4}>
         My journey of creating software - from hands-on engineering to
         full-stack architecture.

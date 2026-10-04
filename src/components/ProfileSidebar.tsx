@@ -1,5 +1,12 @@
 import { Avatar, Box, Button, Typography, useTheme } from "@mui/material";
-import { FiMapPin, FiMail, FiLinkedin, FiGithub } from "react-icons/fi";
+import {
+  FiMapPin,
+  FiMail,
+  FiPhone,
+  FiLinkedin,
+  FiGithub,
+  FiDownload,
+} from "react-icons/fi";
 import { portfolio } from "@/assets/data";
 import { githubStats } from "@/assets/github-stats";
 import { CountUp } from "@/components/CountUp";
@@ -134,6 +141,11 @@ export const ProfileSidebar = () => {
       <Box mt={3} sx={{ borderTop: "1px solid", borderColor: "divider", pt: 2 }}>
         <Highlight icon={<FiMapPin size={16} />} label={portfolio.location} />
         <Highlight
+          icon={<FiPhone size={16} />}
+          label={portfolio.phone}
+          href={`tel:${portfolio.phone.replace(/\s/g, "")}`}
+        />
+        <Highlight
           icon={<FiMail size={16} />}
           label={portfolio.email}
           href={`mailto:${portfolio.email}`}
@@ -184,6 +196,16 @@ const StackButtons = () => (
       startIcon={<FiLinkedin size={14} />}
     >
       Hire Me
+    </Button>
+    <Button
+      variant="outlined"
+      fullWidth
+      href={portfolio.resumeLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      startIcon={<FiDownload size={14} />}
+    >
+      View Resume
     </Button>
   </Box>
 );

@@ -1,17 +1,11 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Box, Grid, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { FiArrowLeft } from "react-icons/fi";
 import { ProfileSidebar } from "@/components/ProfileSidebar";
+import { SectionTabs } from "@/components/SectionTabs";
+import type { SectionTabId } from "@/lib/sections";
 import { RepoContent } from "@/components/RepoContent";
 import { findBySlug } from "@/lib/slug";
-
-const tabs: { id: string; label: string }[] = [
-  { id: "overview", label: "Overview" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
-];
 
 export const ProjectPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -19,7 +13,7 @@ export const ProjectPage = () => {
 
   const project = findBySlug(slug ?? "");
 
-  const goSection = (id: string) => {
+  const goSection = (id: SectionTabId) => {
     navigate("/", { state: { scrollTo: id } });
   };
 
@@ -75,24 +69,7 @@ export const ProjectPage = () => {
             </Box>
           </Box>
 
-          <Box
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              mb: 4,
-            }}
-          >
-            <Tabs
-              value={false}
-              aria-label="Portfolio sections"
-              variant="scrollable"
-              scrollButtons="auto"
-            >
-              {tabs.map((tab) => (
-                <Tab key={tab.id} label={tab.label} onClick={() => goSection(tab.id)} />
-              ))}
-            </Tabs>
-          </Box>
+          <SectionTabs active={false} onTabClick={goSection} />
 
           {!project ? (
             <Box

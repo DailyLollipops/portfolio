@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Box, Grid, Tab, Tabs, Typography, useTheme } from "@mui/material";
+import { Box, Grid, Typography, useTheme } from "@mui/material";
 import { FiBookmark } from "react-icons/fi";
 import { ProfileSidebar } from "@/components/ProfileSidebar";
+import { SectionTabs } from "@/components/SectionTabs";
+import { sectionTabs } from "@/lib/sections";
+import type { SectionTabId } from "@/lib/sections";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContributionCard, LanguageCard } from "@/sections/Stats";
 import { ProjectsPanel } from "@/sections/Projects";
@@ -12,23 +15,13 @@ import { ContactSection } from "@/sections/Contact";
 import type { Project } from "@/types/custom";
 import { portfolio } from "@/assets/data";
 
-type TabKey = "overview" | "projects" | "experience" | "education" | "contact";
-
-const tabs: { id: TabKey; label: string }[] = [
-  { id: "overview", label: "Overview" },
-  { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
-];
-
 interface HomePageProps {
   searchQuery: string;
   onProjectSelect: (project: Project) => void;
 }
 
 export const HomePage = ({ searchQuery, onProjectSelect }: HomePageProps) => {
-  const [activeTab, setActiveTab] = useState<TabKey>("overview");
+  const [activeTab, setActiveTab] = useState<SectionTabId>("overview");
   const theme = useTheme();
   const location = useLocation();
 
@@ -37,14 +30,14 @@ export const HomePage = ({ searchQuery, onProjectSelect }: HomePageProps) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveTab(entry.target.id as TabKey);
+            setActiveTab(entry.target.id as SectionTabId);
           }
         });
       },
       { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
     );
 
-    tabs.forEach((t) => {
+    sectionTabs.forEach((t) => {
       const el = document.getElementById(t.id);
       if (el) observer.observe(el);
     });
@@ -55,14 +48,14 @@ export const HomePage = ({ searchQuery, onProjectSelect }: HomePageProps) => {
   useEffect(() => {
     const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
     if (target) {
-      setActiveTab(target as TabKey);
+      setActiveTab(target as SectionTabId);
       const el = document.getElementById(target);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       window.history.replaceState({}, "");
     }
   }, [location.state]);
 
-  const handleTabChange = (_: React.SyntheticEvent, value: TabKey) => {
+  const handleTabChange = (value: SectionTabId) => {
     setActiveTab(value);
     const el = document.getElementById(value);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -97,25 +90,7 @@ export const HomePage = ({ searchQuery, onProjectSelect }: HomePageProps) => {
         </Grid>
 
         <Grid size={{ xs: 12, md: 8, lg: 9 }} component="section">
-          <Box
-            sx={{
-              borderBottom: "1px solid",
-              borderColor: "divider",
-              mb: 4,
-            }}
-          >
-            <Tabs
-              value={activeTab}
-              onChange={handleTabChange}
-              aria-label="Portfolio sections"
-              variant="scrollable"
-              scrollButtons="auto"
-            >
-              {tabs.map((tab) => (
-                <Tab key={tab.id} label={tab.label} value={tab.id} />
-              ))}
-            </Tabs>
-          </Box>
+          <SectionTabs active={activeTab} onTabClick={handleTabChange} />
 
           {/* Overview */}
           <Box id="overview">

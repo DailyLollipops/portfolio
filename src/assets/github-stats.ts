@@ -21,8 +21,8 @@ export const githubStats: GithubStats = {
   "login": "DailyLollipops",
   "avatarUrl": "https://avatars.githubusercontent.com/u/112395645?u=c8d1cd34e4479cb553571c347a8343cc2231eed4&v=4",
   "followers": 4,
-  "totalContributions": 795,
-  "totalCommits": 207,
+  "totalContributions": 688,
+  "totalCommits": 123,
   "repositories": 50,
   "publicRepos": 14,
   "privateRepos": 36,
@@ -30,12 +30,12 @@ export const githubStats: GithubStats = {
   "languages": [
     {
     "name": "Dart",
-    "bytes": 3395739,
-    "pct": 22.4,
+    "bytes": 3750118,
+    "pct": 23.7,
     "projects": [
       "grassxpert/ugnay",
-      "DailyLollipops/onion_sense",
       "vclane/vclane-client",
+      "DailyLollipops/onion_sense",
       "grassxpert/napiergrasspro",
       "DailyLollipops/click2dine",
       "DailyLollipops/nini_ai",
@@ -48,21 +48,21 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "Python",
-    "bytes": 2860423,
-    "pct": 18.9,
+    "bytes": 3040297,
+    "pct": 19.2,
     "projects": [
-      "vclane/vclane-server",
+      "wifilink/wifi-link-client",
+      "wifilink/wifi-link",
       "grassxpert/ugnay",
-      "DailyLollipops/wifi-link",
+      "vclane/vclane-edge",
+      "vclane/vclane-server",
       "DailyLollipops/petromaxx-admin",
       "DailyLollipops/dole-pulse",
       "grassxpert/napiergrasspro-api",
-      "vclane/vclane-edge",
       "grassxpert/napiergrasspro",
       "DailyLollipops/alaga",
       "DailyLollipops/click2dine",
       "DailyLollipops/fast-web-admin-template",
-      "DailyLollipops/wifi-link-client",
       "DailyLollipops/anime-downloader",
       "devistlab/devistlab",
       "DailyLollipops/blindstick-iot-mqtt-firebase",
@@ -85,15 +85,15 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "TypeScript",
-    "bytes": 2048322,
-    "pct": 13.5,
+    "bytes": 2148745,
+    "pct": 13.6,
     "projects": [
-      "DailyLollipops/wifi-link",
+      "DailyLollipops/portfolio",
+      "wifilink/wifi-link",
       "DailyLollipops/petromaxx-admin",
       "DailyLollipops/dole-pulse",
       "DailyLollipops/alaga",
       "DailyLollipops/fast-web-admin-template",
-      "DailyLollipops/portfolio",
       "devistlab/devistlab",
       "DailyLollipops/schedulock",
       "DailyLollipops/mswdash",
@@ -102,13 +102,13 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "CSS",
-    "bytes": 1902787,
-    "pct": 12.5,
+    "bytes": 1902653,
+    "pct": 12,
     "projects": [
+      "DailyLollipops/portfolio",
       "grassxpert/ugnay",
       "DailyLollipops/medbot",
       "DailyLollipops/BLTS",
-      "DailyLollipops/portfolio",
       "DailyLollipops/SGLG-Tracker",
       "DailyLollipops/depedfilemanager",
       "DailyLollipops/boattracker",
@@ -123,17 +123,17 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "JavaScript",
-    "bytes": 1654930,
-    "pct": 10.9,
+    "bytes": 1661351,
+    "pct": 10.5,
     "projects": [
-      "DailyLollipops/wifi-link",
+      "DailyLollipops/portfolio",
+      "wifilink/wifi-link",
       "DailyLollipops/petromaxx-admin",
       "DailyLollipops/dole-pulse",
       "DailyLollipops/medbot",
       "DailyLollipops/BLTS",
       "DailyLollipops/alaga",
       "DailyLollipops/fast-web-admin-template",
-      "DailyLollipops/portfolio",
       "devistlab/devistlab",
       "DailyLollipops/SGLG-Tracker",
       "DailyLollipops/depedfilemanager",
@@ -148,10 +148,12 @@ export const githubStats: GithubStats = {
     {
     "name": "HTML",
     "bytes": 1212024,
-    "pct": 8,
+    "pct": 7.7,
     "projects": [
+      "DailyLollipops/portfolio",
+      "wifilink/wifi-link-client",
+      "wifilink/wifi-link",
       "grassxpert/ugnay",
-      "DailyLollipops/wifi-link",
       "DailyLollipops/petromaxx-admin",
       "DailyLollipops/dole-pulse",
       "DailyLollipops/onion_sense",
@@ -160,8 +162,6 @@ export const githubStats: GithubStats = {
       "DailyLollipops/alaga",
       "DailyLollipops/click2dine",
       "DailyLollipops/fast-web-admin-template",
-      "DailyLollipops/wifi-link-client",
-      "DailyLollipops/portfolio",
       "devistlab/devistlab",
       "DailyLollipops/SGLG-Tracker",
       "DailyLollipops/depedfilemanager",
@@ -183,7 +183,7 @@ export const githubStats: GithubStats = {
     {
     "name": "Blade",
     "bytes": 766470,
-    "pct": 5.1,
+    "pct": 4.8,
     "projects": [
       "DailyLollipops/medbot",
       "DailyLollipops/BLTS",
@@ -195,7 +195,7 @@ export const githubStats: GithubStats = {
     {
     "name": "PHP",
     "bytes": 667990,
-    "pct": 4.4,
+    "pct": 4.2,
     "projects": [
       "DailyLollipops/medbot",
       "DailyLollipops/BLTS",
@@ -206,202 +206,6 @@ export const githubStats: GithubStats = {
     }
   ],
   "calendar": [
-    {
-    "date": "2025-08-17",
-    "count": 13
-    },
-    {
-    "date": "2025-08-18",
-    "count": 5
-    },
-    {
-    "date": "2025-08-19",
-    "count": 6
-    },
-    {
-    "date": "2025-08-20",
-    "count": 3
-    },
-    {
-    "date": "2025-08-21",
-    "count": 4
-    },
-    {
-    "date": "2025-08-22",
-    "count": 5
-    },
-    {
-    "date": "2025-08-23",
-    "count": 16
-    },
-    {
-    "date": "2025-08-24",
-    "count": 0
-    },
-    {
-    "date": "2025-08-25",
-    "count": 0
-    },
-    {
-    "date": "2025-08-26",
-    "count": 0
-    },
-    {
-    "date": "2025-08-27",
-    "count": 3
-    },
-    {
-    "date": "2025-08-28",
-    "count": 6
-    },
-    {
-    "date": "2025-08-29",
-    "count": 16
-    },
-    {
-    "date": "2025-08-30",
-    "count": 2
-    },
-    {
-    "date": "2025-08-31",
-    "count": 17
-    },
-    {
-    "date": "2025-09-01",
-    "count": 11
-    },
-    {
-    "date": "2025-09-02",
-    "count": 2
-    },
-    {
-    "date": "2025-09-03",
-    "count": 8
-    },
-    {
-    "date": "2025-09-04",
-    "count": 0
-    },
-    {
-    "date": "2025-09-05",
-    "count": 5
-    },
-    {
-    "date": "2025-09-06",
-    "count": 1
-    },
-    {
-    "date": "2025-09-07",
-    "count": 4
-    },
-    {
-    "date": "2025-09-08",
-    "count": 3
-    },
-    {
-    "date": "2025-09-09",
-    "count": 0
-    },
-    {
-    "date": "2025-09-10",
-    "count": 0
-    },
-    {
-    "date": "2025-09-11",
-    "count": 2
-    },
-    {
-    "date": "2025-09-12",
-    "count": 1
-    },
-    {
-    "date": "2025-09-13",
-    "count": 0
-    },
-    {
-    "date": "2025-09-14",
-    "count": 0
-    },
-    {
-    "date": "2025-09-15",
-    "count": 10
-    },
-    {
-    "date": "2025-09-16",
-    "count": 3
-    },
-    {
-    "date": "2025-09-17",
-    "count": 4
-    },
-    {
-    "date": "2025-09-18",
-    "count": 0
-    },
-    {
-    "date": "2025-09-19",
-    "count": 0
-    },
-    {
-    "date": "2025-09-20",
-    "count": 2
-    },
-    {
-    "date": "2025-09-21",
-    "count": 9
-    },
-    {
-    "date": "2025-09-22",
-    "count": 3
-    },
-    {
-    "date": "2025-09-23",
-    "count": 11
-    },
-    {
-    "date": "2025-09-24",
-    "count": 0
-    },
-    {
-    "date": "2025-09-25",
-    "count": 0
-    },
-    {
-    "date": "2025-09-26",
-    "count": 1
-    },
-    {
-    "date": "2025-09-27",
-    "count": 14
-    },
-    {
-    "date": "2025-09-28",
-    "count": 6
-    },
-    {
-    "date": "2025-09-29",
-    "count": 12
-    },
-    {
-    "date": "2025-09-30",
-    "count": 2
-    },
-    {
-    "date": "2025-10-01",
-    "count": 6
-    },
-    {
-    "date": "2025-10-02",
-    "count": 0
-    },
-    {
-    "date": "2025-10-03",
-    "count": 0
-    },
-    {
-    "date": "2025-10-04",
-    "count": 0
-    },
     {
     "date": "2025-10-05",
     "count": 0
@@ -532,7 +336,7 @@ export const githubStats: GithubStats = {
     },
     {
     "date": "2025-11-06",
-    "count": 3
+    "count": 2
     },
     {
     "date": "2025-11-07",
@@ -684,7 +488,7 @@ export const githubStats: GithubStats = {
     },
     {
     "date": "2025-12-14",
-    "count": 13
+    "count": 12
     },
     {
     "date": "2025-12-15",
@@ -716,7 +520,7 @@ export const githubStats: GithubStats = {
     },
     {
     "date": "2025-12-22",
-    "count": 12
+    "count": 9
     },
     {
     "date": "2025-12-23",
@@ -1664,12 +1468,208 @@ export const githubStats: GithubStats = {
     },
     {
     "date": "2026-08-16",
-    "count": 1
+    "count": 2
     },
     {
     "date": "2026-08-17",
+    "count": 7
+    },
+    {
+    "date": "2026-08-18",
     "count": 0
+    },
+    {
+    "date": "2026-08-19",
+    "count": 0
+    },
+    {
+    "date": "2026-08-20",
+    "count": 0
+    },
+    {
+    "date": "2026-08-21",
+    "count": 0
+    },
+    {
+    "date": "2026-08-22",
+    "count": 2
+    },
+    {
+    "date": "2026-08-23",
+    "count": 20
+    },
+    {
+    "date": "2026-08-24",
+    "count": 2
+    },
+    {
+    "date": "2026-08-25",
+    "count": 0
+    },
+    {
+    "date": "2026-08-26",
+    "count": 0
+    },
+    {
+    "date": "2026-08-27",
+    "count": 5
+    },
+    {
+    "date": "2026-08-28",
+    "count": 0
+    },
+    {
+    "date": "2026-08-29",
+    "count": 0
+    },
+    {
+    "date": "2026-08-30",
+    "count": 4
+    },
+    {
+    "date": "2026-08-31",
+    "count": 4
+    },
+    {
+    "date": "2026-09-01",
+    "count": 0
+    },
+    {
+    "date": "2026-09-02",
+    "count": 0
+    },
+    {
+    "date": "2026-09-03",
+    "count": 2
+    },
+    {
+    "date": "2026-09-04",
+    "count": 2
+    },
+    {
+    "date": "2026-09-05",
+    "count": 2
+    },
+    {
+    "date": "2026-09-06",
+    "count": 0
+    },
+    {
+    "date": "2026-09-07",
+    "count": 0
+    },
+    {
+    "date": "2026-09-08",
+    "count": 2
+    },
+    {
+    "date": "2026-09-09",
+    "count": 8
+    },
+    {
+    "date": "2026-09-10",
+    "count": 0
+    },
+    {
+    "date": "2026-09-11",
+    "count": 0
+    },
+    {
+    "date": "2026-09-12",
+    "count": 0
+    },
+    {
+    "date": "2026-09-13",
+    "count": 0
+    },
+    {
+    "date": "2026-09-14",
+    "count": 1
+    },
+    {
+    "date": "2026-09-15",
+    "count": 1
+    },
+    {
+    "date": "2026-09-16",
+    "count": 4
+    },
+    {
+    "date": "2026-09-17",
+    "count": 8
+    },
+    {
+    "date": "2026-09-18",
+    "count": 8
+    },
+    {
+    "date": "2026-09-19",
+    "count": 0
+    },
+    {
+    "date": "2026-09-20",
+    "count": 0
+    },
+    {
+    "date": "2026-09-21",
+    "count": 6
+    },
+    {
+    "date": "2026-09-22",
+    "count": 2
+    },
+    {
+    "date": "2026-09-23",
+    "count": 8
+    },
+    {
+    "date": "2026-09-24",
+    "count": 2
+    },
+    {
+    "date": "2026-09-25",
+    "count": 1
+    },
+    {
+    "date": "2026-09-26",
+    "count": 0
+    },
+    {
+    "date": "2026-09-27",
+    "count": 0
+    },
+    {
+    "date": "2026-09-28",
+    "count": 1
+    },
+    {
+    "date": "2026-09-29",
+    "count": 0
+    },
+    {
+    "date": "2026-09-30",
+    "count": 2
+    },
+    {
+    "date": "2026-10-01",
+    "count": 1
+    },
+    {
+    "date": "2026-10-02",
+    "count": 0
+    },
+    {
+    "date": "2026-10-03",
+    "count": 0
+    },
+    {
+    "date": "2026-10-04",
+    "count": 0
+    },
+    {
+    "date": "2026-10-05",
+    "count": 8
     }
   ],
-  "updatedAt": "2026-08-16T18:44:50.027Z"
+  "updatedAt": "2026-10-04T20:47:19.589Z"
 };

@@ -106,7 +106,8 @@ export const ContactSection = () => {
           border: "1px solid",
           borderColor: "divider",
           backgroundColor: "background.paper",
-          maxWidth: 720,
+          width: "100%",
+          maxWidth: "100%",
         }}
       >
         {/* GitHub-style editor tab bar */}

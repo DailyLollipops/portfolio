@@ -63,7 +63,7 @@ export const portfolio: PortfolioData = {
   projectTagline:
     "A showcase of projects demonstrating end-to-end development skills-from web and mobile to embedded systems.",
   location: "Marinduque, Philippines",
-  email: "clarencemadrigal.dev@gmail.com",
+  email: "clarencemadrigal08@gmail.com",
   blog: "https://github.com/DailyLollipops",
   tags: [
     "Python",

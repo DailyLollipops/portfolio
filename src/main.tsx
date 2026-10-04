@@ -7,7 +7,7 @@ import { GitHubThemeProvider } from "./theme/theme-provider";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <GitHubThemeProvider>
-      <BrowserRouter basename="/portfolio">
+      <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/+$/, "") || "/"}>
         <App />
       </BrowserRouter>
     </GitHubThemeProvider>

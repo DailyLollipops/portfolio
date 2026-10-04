@@ -7,16 +7,18 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ContributionCard, LanguageCard } from "@/sections/Stats";
 import { ProjectsPanel } from "@/sections/Projects";
 import { WorkExperienceSection } from "@/sections/WorkExperience";
+import { EducationSection } from "@/sections/Education";
 import { ContactSection } from "@/sections/Contact";
 import type { Project } from "@/types/custom";
 import { portfolio } from "@/assets/data";
 
-type TabKey = "overview" | "projects" | "experience" | "contact";
+type TabKey = "overview" | "projects" | "experience" | "education" | "contact";
 
 const tabs: { id: TabKey; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },
+  { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -151,6 +153,7 @@ export const HomePage = ({ searchQuery, onProjectSelect }: HomePageProps) => {
 
           <ProjectsPanel query={searchQuery} onProjectSelect={onProjectSelect} />
           <WorkExperienceSection />
+          <EducationSection />
           <ContactSection />
         </Grid>
       </Grid>

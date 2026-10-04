@@ -29,6 +29,12 @@ export interface Experience {
   tags: Tag[];
 }
 
+export interface Education {
+  school: string;
+  degree: string;
+  period: string;
+}
+
 export interface PortfolioData {
   name: string;
   login: string;
@@ -37,10 +43,14 @@ export interface PortfolioData {
   projectTagline: string;
   location: string;
   email: string;
+  phone: string;
   blog: string;
   tags: Tag[];
   githubLink: string;
   linkedInLink: string;
+  resumeLink: string;
   projects: Project[];
   experiences: Experience[];
+  education: Education[];
+  certifications: string[];
 }

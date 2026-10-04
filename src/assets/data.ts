@@ -94,4 +94,30 @@ export const portfolio: PortfolioData = {
     raspidevkit,
   ],
   experiences: experiences,
+  education: [
+    {
+      school: "Marinduque State College",
+      degree: "BS Computer Engineering",
+      period: "2023",
+    },
+    {
+      school: "Marinduque State College",
+      degree: "Senior High School - STEM",
+      period: "2019",
+    },
+    {
+      school: "Marinduque Midwest College",
+      degree: "Junior High School",
+      period: "2017",
+    },
+    {
+      school: "Gasan Central School",
+      degree: "Elementary",
+      period: "2014",
+    },
+  ],
+  certifications: [
+    "Google Data Analytics Specialization - Coursera (2023)",
+    "DOST Scholarship (R.A. 7687)",
+  ],
 };

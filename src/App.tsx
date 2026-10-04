@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-import { ScrollToTop } from "./components/ScrollToTop";
+import { ScrollToTop, ScrollToTopButton } from "./components/ScrollToTop";
 import { HomePage } from "./pages/HomePage";
 import { ProjectPage } from "./pages/ProjectPage";
 import { projectSlug } from "./lib/slug";
@@ -47,6 +47,7 @@ const AppShell = () => {
         <Route path="/projects/:slug" element={<ProjectPage />} />
       </Routes>
       <Footer />
+      <ScrollToTopButton />
     </>
   );
 };

@@ -21,7 +21,7 @@ export const githubStats: GithubStats = {
   "login": "DailyLollipops",
   "avatarUrl": "https://avatars.githubusercontent.com/u/112395645?u=c8d1cd34e4479cb553571c347a8343cc2231eed4&v=4",
   "followers": 4,
-  "totalContributions": 695,
+  "totalContributions": 699,
   "totalCommits": 124,
   "repositories": 51,
   "publicRepos": 15,
@@ -48,7 +48,7 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "Python",
-    "bytes": 3058279,
+    "bytes": 3058507,
     "pct": 19.3,
     "projects": [
       "wifilink/wifi-link-client",
@@ -85,7 +85,7 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "TypeScript",
-    "bytes": 2148993,
+    "bytes": 2149047,
     "pct": 13.6,
     "projects": [
       "DailyLollipops/portfolio",
@@ -206,34 +206,6 @@ export const githubStats: GithubStats = {
     }
   ],
   "calendar": [
-    {
-    "date": "2025-10-05",
-    "count": 0
-    },
-    {
-    "date": "2025-10-06",
-    "count": 1
-    },
-    {
-    "date": "2025-10-07",
-    "count": 5
-    },
-    {
-    "date": "2025-10-08",
-    "count": 8
-    },
-    {
-    "date": "2025-10-09",
-    "count": 6
-    },
-    {
-    "date": "2025-10-10",
-    "count": 0
-    },
-    {
-    "date": "2025-10-11",
-    "count": 0
-    },
     {
     "date": "2025-10-12",
     "count": 0
@@ -1688,8 +1660,12 @@ export const githubStats: GithubStats = {
     },
     {
     "date": "2026-10-10",
-    "count": 2
+    "count": 6
+    },
+    {
+    "date": "2026-10-11",
+    "count": 0
     }
   ],
-  "updatedAt": "2026-10-10T04:11:11.722Z"
+  "updatedAt": "2026-10-11T03:48:38.806Z"
 };

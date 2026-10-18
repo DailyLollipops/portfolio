@@ -85,7 +85,7 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "TypeScript",
-    "bytes": 2149369,
+    "bytes": 2149423,
     "pct": 13.5,
     "projects": [
       "DailyLollipops/portfolio",
@@ -206,34 +206,6 @@ export const githubStats: GithubStats = {
     }
   ],
   "calendar": [
-    {
-    "date": "2025-10-12",
-    "count": 0
-    },
-    {
-    "date": "2025-10-13",
-    "count": 0
-    },
-    {
-    "date": "2025-10-14",
-    "count": 0
-    },
-    {
-    "date": "2025-10-15",
-    "count": 9
-    },
-    {
-    "date": "2025-10-16",
-    "count": 0
-    },
-    {
-    "date": "2025-10-17",
-    "count": 0
-    },
-    {
-    "date": "2025-10-18",
-    "count": 0
-    },
     {
     "date": "2025-10-19",
     "count": 1
@@ -1689,7 +1661,11 @@ export const githubStats: GithubStats = {
     {
     "date": "2026-10-17",
     "count": 0
+    },
+    {
+    "date": "2026-10-18",
+    "count": 0
     }
   ],
-  "updatedAt": "2026-10-17T02:52:28.050Z"
+  "updatedAt": "2026-10-18T02:54:04.292Z"
 };

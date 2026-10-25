@@ -21,8 +21,8 @@ export const githubStats: GithubStats = {
   "login": "DailyLollipops",
   "avatarUrl": "https://avatars.githubusercontent.com/u/112395645?u=c8d1cd34e4479cb553571c347a8343cc2231eed4&v=4",
   "followers": 4,
-  "totalContributions": 757,
-  "totalCommits": 139,
+  "totalContributions": 772,
+  "totalCommits": 141,
   "repositories": 51,
   "publicRepos": 15,
   "privateRepos": 36,
@@ -30,8 +30,8 @@ export const githubStats: GithubStats = {
   "languages": [
     {
     "name": "Dart",
-    "bytes": 3760740,
-    "pct": 23.5,
+    "bytes": 3856239,
+    "pct": 23.9,
     "projects": [
       "vclane/vclane-client",
       "grassxpert/ugnay",
@@ -48,7 +48,7 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "Python",
-    "bytes": 3140640,
+    "bytes": 3171186,
     "pct": 19.7,
     "projects": [
       "vclane/vclane-edge",
@@ -85,8 +85,8 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "TypeScript",
-    "bytes": 2149369,
-    "pct": 13.5,
+    "bytes": 2149423,
+    "pct": 13.3,
     "projects": [
       "DailyLollipops/portfolio",
       "wifilink/wifi-link",
@@ -103,7 +103,7 @@ export const githubStats: GithubStats = {
     {
     "name": "CSS",
     "bytes": 1902653,
-    "pct": 11.9,
+    "pct": 11.8,
     "projects": [
       "DailyLollipops/portfolio",
       "grassxpert/ugnay",
@@ -124,7 +124,7 @@ export const githubStats: GithubStats = {
     {
     "name": "JavaScript",
     "bytes": 1661351,
-    "pct": 10.4,
+    "pct": 10.3,
     "projects": [
       "DailyLollipops/portfolio",
       "wifilink/wifi-link",
@@ -148,7 +148,7 @@ export const githubStats: GithubStats = {
     {
     "name": "HTML",
     "bytes": 1212024,
-    "pct": 7.6,
+    "pct": 7.5,
     "projects": [
       "DailyLollipops/portfolio",
       "wifilink/wifi-link",
@@ -195,7 +195,7 @@ export const githubStats: GithubStats = {
     {
     "name": "PHP",
     "bytes": 667990,
-    "pct": 4.2,
+    "pct": 4.1,
     "projects": [
       "DailyLollipops/medbot",
       "DailyLollipops/BLTS",
@@ -206,34 +206,6 @@ export const githubStats: GithubStats = {
     }
   ],
   "calendar": [
-    {
-    "date": "2025-10-19",
-    "count": 1
-    },
-    {
-    "date": "2025-10-20",
-    "count": 0
-    },
-    {
-    "date": "2025-10-21",
-    "count": 0
-    },
-    {
-    "date": "2025-10-22",
-    "count": 0
-    },
-    {
-    "date": "2025-10-23",
-    "count": 8
-    },
-    {
-    "date": "2025-10-24",
-    "count": 4
-    },
-    {
-    "date": "2025-10-25",
-    "count": 0
-    },
     {
     "date": "2025-10-26",
     "count": 0
@@ -1688,8 +1660,12 @@ export const githubStats: GithubStats = {
     },
     {
     "date": "2026-10-24",
-    "count": 1
+    "count": 13
+    },
+    {
+    "date": "2026-10-25",
+    "count": 3
     }
   ],
-  "updatedAt": "2026-10-24T03:09:01.873Z"
+  "updatedAt": "2026-10-25T03:04:03.010Z"
 };

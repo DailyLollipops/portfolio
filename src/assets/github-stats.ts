@@ -21,7 +21,7 @@ export const githubStats: GithubStats = {
   "login": "DailyLollipops",
   "avatarUrl": "https://avatars.githubusercontent.com/u/112395645?u=c8d1cd34e4479cb553571c347a8343cc2231eed4&v=4",
   "followers": 4,
-  "totalContributions": 771,
+  "totalContributions": 774,
   "totalCommits": 132,
   "repositories": 53,
   "publicRepos": 15,
@@ -31,7 +31,7 @@ export const githubStats: GithubStats = {
     {
     "name": "Dart",
     "bytes": 3887098,
-    "pct": 23.5,
+    "pct": 22.6,
     "projects": [
       "vclane/vclane-client",
       "grassxpert/ugnay",
@@ -48,8 +48,8 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "Python",
-    "bytes": 3381398,
-    "pct": 20.4,
+    "bytes": 3707494,
+    "pct": 21.6,
     "projects": [
       "DailyLollipops/vtsclinic-lead-dashboard",
       "vclane/vclane-edge",
@@ -86,8 +86,8 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "TypeScript",
-    "bytes": 2346983,
-    "pct": 14.2,
+    "bytes": 2607438,
+    "pct": 15.2,
     "projects": [
       "DailyLollipops/portfolio",
       "DailyLollipops/vtsclinic-lead-dashboard",
@@ -106,7 +106,7 @@ export const githubStats: GithubStats = {
     {
     "name": "CSS",
     "bytes": 1902653,
-    "pct": 11.5,
+    "pct": 11.1,
     "projects": [
       "DailyLollipops/portfolio",
       "grassxpert/ugnay",
@@ -127,7 +127,7 @@ export const githubStats: GithubStats = {
     {
     "name": "JavaScript",
     "bytes": 1662717,
-    "pct": 10,
+    "pct": 9.7,
     "projects": [
       "DailyLollipops/portfolio",
       "DailyLollipops/vtsclinic-lead-dashboard",
@@ -151,8 +151,8 @@ export const githubStats: GithubStats = {
     },
     {
     "name": "HTML",
-    "bytes": 1215469,
-    "pct": 7.3,
+    "bytes": 1215233,
+    "pct": 7.1,
     "projects": [
       "DailyLollipops/portfolio",
       "DailyLollipops/vtsclinic-lead-dashboard",
@@ -188,7 +188,7 @@ export const githubStats: GithubStats = {
     {
     "name": "Blade",
     "bytes": 766470,
-    "pct": 4.6,
+    "pct": 4.5,
     "projects": [
       "DailyLollipops/medbot",
       "DailyLollipops/BLTS",
@@ -200,7 +200,7 @@ export const githubStats: GithubStats = {
     {
     "name": "PHP",
     "bytes": 667990,
-    "pct": 4,
+    "pct": 3.9,
     "projects": [
       "DailyLollipops/medbot",
       "DailyLollipops/BLTS",
@@ -211,34 +211,6 @@ export const githubStats: GithubStats = {
     }
   ],
   "calendar": [
-    {
-    "date": "2025-11-09",
-    "count": 8
-    },
-    {
-    "date": "2025-11-10",
-    "count": 1
-    },
-    {
-    "date": "2025-11-11",
-    "count": 0
-    },
-    {
-    "date": "2025-11-12",
-    "count": 5
-    },
-    {
-    "date": "2025-11-13",
-    "count": 12
-    },
-    {
-    "date": "2025-11-14",
-    "count": 13
-    },
-    {
-    "date": "2025-11-15",
-    "count": 2
-    },
     {
     "date": "2025-11-16",
     "count": 12
@@ -1693,8 +1665,12 @@ export const githubStats: GithubStats = {
     },
     {
     "date": "2026-11-14",
+    "count": 3
+    },
+    {
+    "date": "2026-11-15",
     "count": 0
     }
   ],
-  "updatedAt": "2026-11-14T04:49:12.201Z"
+  "updatedAt": "2026-11-15T04:40:37.993Z"
 };
